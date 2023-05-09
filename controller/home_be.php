@@ -7,15 +7,11 @@
         $conn->close();
         return $result;
     }
-    function select_partner($id){
+    function select_partner(){
         $conn = connect_db();
-        $sql = "SELECT * FROM home_display_script WHERE id_home_display_type_event = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt -> bind_param("i",$id_partner);
-        $id_partner = $id;
-        $stmt->execute();
-        $result = $stmt -> get_result();
-        close_db($stmt,$conn);
+        $sql = "SELECT * FROM partner";
+        $result = $conn -> query($sql);
+        $conn -> close();
         return $result;
     }
     function select_contact(){

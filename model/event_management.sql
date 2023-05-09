@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `event_management` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `event_management`;
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: event_management
 -- ------------------------------------------------------
@@ -16,40 +18,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `book1`
---
-
-DROP TABLE IF EXISTS `book1`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `book1` (
-  `MyUnknownColumn` text,
-  `MyUnknownColumn_[0]` text,
-  `MyUnknownColumn_[1]` text,
-  `MyUnknownColumn_[2]` text,
-  `MyUnknownColumn_[3]` text,
-  `b?ng equipment` text,
-  `MyUnknownColumn_[4]` text,
-  `MyUnknownColumn_[5]` text,
-  `MyUnknownColumn_[6]` text,
-  `MyUnknownColumn_[7]` text,
-  `MyUnknownColumn_[8]` text,
-  `MyUnknownColumn_[9]` text,
-  `MyUnknownColumn_[10]` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `book1`
---
-
-LOCK TABLES `book1` WRITE;
-/*!40000 ALTER TABLE `book1` DISABLE KEYS */;
-INSERT INTO `book1` VALUES ('','','','','',' b?ng equipment','','','','','','',''),('','','','','id','name','equipment_type_id','','avaiable','','','',''),('','','','','1','bàn gh? ','BG01','','còn','','','',''),('','','','','2','qu?t','Q03','','còn','','','',''),('','','','','3','?i?u hòa','DH06','','còn','','','',''),('','','','','4','máy chi?u','MC01','','còn','','','',''),('','','','','5','sân kh?u','SK05','','còn','','','',''),('','','','','6','th?m ??','TD03','','còn','','','',''),('','','','','7','bóng bay','BB04','','còn','','','',''),('','','','','8','loa','L02','','còn','','','',''),('','','','','9','máy quay','MQ09','','còn','','','',''),('','','','','10','b?c phát bi?u','BPB07','','còn','','','',''),('','','','','11','hàng rào ','HR05','','còn','','','',''),('','','','','12','khói l?nh','KL01','','còn','','','',''),('','','','','','','','','','','','',''),('','','','','','','','','','','','',''),('','','','','','','','','','','','','');
-/*!40000 ALTER TABLE `book1` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `contact`
 --
 
@@ -60,7 +28,7 @@ CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -71,7 +39,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (1,'423 minh khai','ltdd0102@gmail.com',961881091);
+INSERT INTO `contact` VALUES (1,'41 Hàng Bún, Ba Đình, Hà Nội','contact@tranganplaza.vn','0243 8888 999 - 0688 888 888');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +96,6 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'Đình Thuận','Đặng'),(2,'Thành Đạt','Lê'),(3,'Tiến Tài','Lê'),(4,'Doãn Toàn','Phạm');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +142,7 @@ CREATE TABLE `equipment` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `equipment_type_id` int(11) DEFAULT NULL,
-  `available` float DEFAULT NULL,
+  `avaiable` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `equipment_type_id_idx` (`equipment_type_id`),
   CONSTRAINT `equipment_type_id` FOREIGN KEY (`equipment_type_id`) REFERENCES `equipment_type` (`id`)
@@ -188,7 +155,6 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (1,'bàn ghế',1,50),(2,'quạt',2,100),(3,'điều hòa',2,60),(4,'máy chiếu',3,50),(5,'sân khấu',1,50),(6,'thảm đỏ',1,100),(7,'bóng bay',4,500),(8,'loa',3,100),(9,'máy quay',3,50),(10,'bục phát biểu',1,50),(11,'hàng rào',4,100),(12,'khói lạnh',4,50);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +178,6 @@ CREATE TABLE `equipment_type` (
 
 LOCK TABLES `equipment_type` WRITE;
 /*!40000 ALTER TABLE `equipment_type` DISABLE KEYS */;
-INSERT INTO `equipment_type` VALUES (1,'đồ nội thất'),(2,'đồ điện lạnh'),(3,'đồ điện tử'),(4,'đồ trang trí');
 /*!40000 ALTER TABLE `equipment_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,6 +266,33 @@ LOCK TABLES `has_role` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `home_display_script`
+--
+
+DROP TABLE IF EXISTS `home_display_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `home_display_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `home_display_name` text,
+  `home_display_script` text,
+  `home_display_other` text,
+  `home_display_image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `home_display_script`
+--
+
+LOCK TABLES `home_display_script` WRITE;
+/*!40000 ALTER TABLE `home_display_script` DISABLE KEYS */;
+INSERT INTO `home_display_script` VALUES (1,'TRÀNG AN PLAZA','Khởi đầu là một công ty tổ chức sự kiện với nhiều năm kinh nghiệm trong lĩnh vực tiệc cưới, Tràng An Plaza luôn cung cấp cho khách hàng những gói dịch vụ thông minh, tiết kiệm và tiện lợi, là giải pháp cho tất cả các cô dâu chú rể đang chuẩn bị cho ngày trọng đại của mình. Bên cạnh đó, Tràng An Plaza ngày càng mở rộng và phát triển đa dạng trong tất cả các sự kiện đặc biệt khác như tiệc sinh nhật, lễ kỉ niệm, tiệc doanh nghiệp … vẫn theo tiêu chí đem lại những dịch vụ tốt nhất dành cho khách hàng.','Tràng An Plaza, với sức mạnh kinh nghiệm của một tập thể đầy năng lực, tác phong chuyên nghiệp, tinh thần làm việc nghiêm túc. Nguồn nhân lực trẻ có sức sáng tạo không ngừng và gu thẩm mỹ nghệ thuật đa phong cách. Sự đầu tư có chiều sâu về đội ngũ nhân viên đầy sáng tạo cũng như hệ thống trang thiết bị chuyên nghiệp. Chúng tôi mang tới cho khách hàng không chỉ là sự thỏa mãn cho công việc mà còn là sự tin tưởng và hợp tác lâu dài. Đẳng cấp và khác biệt chỉ tại Tràng An Plaza các bạn sẽ có 1 đám cưới trong mơ, mang phong cách riêng của chính mình vì bạn xứng đáng với điều đó.','wedding_5.jpg'),(2,'TIỆC CƯỚI & KỶ NIỆM','Phút giây lắng đọng, ấm áp bên nhau chính là món quà tinh thần ý nghĩa nhất đánh dấu những mốc son mà bạn luôn mong muốn lưu giữ. Giao hòa trong bầu không khí là nét đẹp kiến trúc đắt giá để câu chuyện kéo dài giữa nhịp cảm xúc và thực đơn hấp dẫn khiến bữa tiệc lan tỏa tính gắn kết nhờ trải nghiệm vị giác.',NULL,'wedding_6.jpg'),(3,'TIỆC DOANH NGHIỆP','Tại Tràng An Plaza, những không gian đa dạng được kết cấu chặt chẽ cùng dịch vụ sự kiện trọn gói là tổng thể hoàn chỉnh để các nhà tổ chức tối ưu hóa kế hoạch của mình. Việc giảm tải gánh nặng tổ chức đồng nghĩa với khả năng tập trung hơn ở các khâu nội dung hay quảng bá.',NULL,'company_1.jpg'),(4,'TIỆC NGOÀI TRỜI','Thay vì bó hẹp không gian và lựa chọn của mình, tại sao bạn không đổi mới và phá cách cho bữa tiệc chiêu đãi cảm xúc của mình bằng việc lựa chọn không gian tổ chức tiệc cưới ngoài trời, hòa mình với thiên nhiên, với sắc xanh nhẹ nhàng mà bay bổng để gây ấn tượng mạnh mẽ với quan khách tham dự. Địa điểm tổ chức tiệc cưới ngoài trời rộng rãi, sang trọng đem đến buổi lễ thành hôn đáng nhớ nhất.',NULL,'outdoor_1.jpg'),(5,'KIẾN TRÚC CỔ ĐIỂN','Khung dáng đắp đá marble, phân bổ thêm những đường cong uốn cạnh, các sảnh tiệc lộ diện theo cá tính không trùng lặp.Tràng An Plaza không che giấu ý định tạo nên ấn tượng choáng ngợp cho bất kỳ ai ghé qua.',NULL,'architecture.jpg'),(6,'DỊCH VỤ THẤU HIỂU','Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng',NULL,'service_1.jpg'),(7,'DẤU ẤN ẨM THỰC','Các thực đơn tiệc buffet, tiệc tea-break, tiệc set-menu hay thực đơn tự chọn hài hòa trong cách kết hợp món, dễ tiếp cận đến khẩu vị bản địa nhưng vẫn đủ biến tấu làm thực khách bật lên lời khen tấm tắc.',NULL,'food_1.jpg');
+/*!40000 ALTER TABLE `home_display_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `is_partner`
 --
 
@@ -364,6 +356,33 @@ LOCK TABLES `participate` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `partner`
+--
+
+DROP TABLE IF EXISTS `partner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `partner_name` varchar(255) DEFAULT NULL,
+  `partner_phone` int(11) DEFAULT NULL,
+  `partner_email` varchar(255) DEFAULT NULL,
+  `partner_logo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `partner`
+--
+
+LOCK TABLES `partner` WRITE;
+/*!40000 ALTER TABLE `partner` DISABLE KEYS */;
+INSERT INTO `partner` VALUES (1,'mb bank',123456789,'mbbank@contact.vn','mb-bank.jpg'),(2,'fpt',123456789,'fpt@contact.vn','fpt.jpg'),(3,'vin group',123456789,'vingroup@contact.vn','vingroup.jpg'),(4,'viettel',123456789,'viettel@contact.vn','viettel.png');
+/*!40000 ALTER TABLE `partner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `partner_role`
 --
 
@@ -374,7 +393,7 @@ CREATE TABLE `partner_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -383,6 +402,7 @@ CREATE TABLE `partner_role` (
 
 LOCK TABLES `partner_role` WRITE;
 /*!40000 ALTER TABLE `partner_role` DISABLE KEYS */;
+INSERT INTO `partner_role` VALUES (1,'diamond'),(2,'platium'),(3,'gold'),(4,'silver'),(5,'bronze');
 /*!40000 ALTER TABLE `partner_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,7 +428,6 @@ CREATE TABLE `performer` (
 
 LOCK TABLES `performer` WRITE;
 /*!40000 ALTER TABLE `performer` DISABLE KEYS */;
-INSERT INTO `performer` VALUES (1,'ST-MTP','music','0961881091'),(2,'Hào Dũng','múa lân','0246578996'),(3,'B-Wild','dance','0388866998'),(4,'nhóm xiếc Trung Ương','xiếc','0934502224'),(5,'C.A.C','dance','0369852257'),(6,'Oops Crew','dance','0534883363'),(7,'Jack','music','0967833345'),(8,'The A-Code','dance','0325666778'),(9,'FGDance','dance','0458883357'),(10,'vũ đoàn Fevery','múa dân gian','0938859998');
 /*!40000 ALTER TABLE `performer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,7 +511,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'event coordinator'),(2,'event planner'),(3,'client service event manager'),(4,'event manager'),(5,'event executive'),(6,'director'),(7,'marketing');
+INSERT INTO `role` VALUES (1,'admin'),(2,'user');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,10 +558,13 @@ CREATE TABLE `viewer` (
   `viewer_password` varchar(15) DEFAULT NULL,
   `viewer_name` varchar(255) DEFAULT NULL,
   `viewer_gender` varchar(45) DEFAULT NULL,
-  `viewer_dob` datetime DEFAULT NULL,
   `viewer_email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `viewer_phone` int(10) DEFAULT NULL,
+  `role_id` int(11) DEFAULT '2',
+  PRIMARY KEY (`id`),
+  KEY `role_id_idx` (`role_id`),
+  CONSTRAINT `role_id_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -551,6 +573,7 @@ CREATE TABLE `viewer` (
 
 LOCK TABLES `viewer` WRITE;
 /*!40000 ALTER TABLE `viewer` DISABLE KEYS */;
+INSERT INTO `viewer` VALUES (5,'thuandang1122','thuan123','Thuan Dang','male','thuan@apteach.vn',332834012,2),(6,'admin','thuan1234','Thuan Dang','male','thuan1@apteach.vn',332834011,1),(7,'thuan123','12345678','Thuan Dang','male','thuan123@apteach.vn',332834013,2);
 /*!40000 ALTER TABLE `viewer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -563,4 +586,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-08 15:53:02
+-- Dump completed on 2023-05-09 17:47:38

@@ -8,10 +8,10 @@
             $img[] = $row['home_display_image'];
         }
     }
-    $result_partner = select_partner(4);
+    $result_partner = select_partner();
     if ($result_partner -> num_rows > 0){
         while ($row_partner = $result_partner -> fetch_assoc()){
-            $image[] = $row_partner['home_display_image'];
+            $image[] = $row_partner['partner_logo'];
         }
     }
     $result_contact = select_contact();
