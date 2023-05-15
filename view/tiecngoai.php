@@ -151,9 +151,9 @@
                 <div class="col-4">
                     <ul>
                         <li><a href="#">CONTACT</a></li>
-                        <li>Phone: <?php echo $phone[0];  ?></li>
-                        <li>Address: <?php echo $address[0]; ?></li>
-                        <li>Email: <?php echo $email[0]; ?></li>
+                        <li>Phone: </li>
+                        <li>Address: </li>
+                        <li>Email: </li>
                     </ul>
                 </div>
                 <div class="col-4">
