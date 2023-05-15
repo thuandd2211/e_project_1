@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 13px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: justify;
+    line-height: 30px;
+    
+}
+main{
+    width: 100%;
+    height: fit-content;
+}
+#clear{
+    clear: both;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}
+nav {
+    background-color: rgb(191, 243, 243);
+    height: 75px;  
+}

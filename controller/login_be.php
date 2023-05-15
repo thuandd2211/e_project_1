@@ -7,7 +7,7 @@
     function check_username($str){     
         $conn = connect_db();
         $flag = 0;
-        $sql = "SELECT id,role_id, viewer_username,viewer_password FROM viewer WHERE viewer_username = ? ";
+        $sql = "SELECT id,role_id, viewer_username,viewer_password, viewer_name FROM viewer WHERE viewer_username = ? ";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param("s",$str);
         $stmt -> execute();
@@ -33,13 +33,15 @@
                 if ($row['role_id'] == 1){
                     $flag = 1;
                 }
+                $data['name'] = $row['viewer_name'];
+                $data['id'] = $row['id'];
             }
         } else {
             $error['username'] = "Sai tài khoản, vui lòng nhập lại.";
         
         }
         if (!$error){
-            $_SESSION['user'] = array($data['username'], $data['password'], $row['id']);
+            $_SESSION['user'] = array($data['username'], $data['password'], $data['id'], $data['name']);
             if (isset($_POST['remember'])){
                 setcookie("username",$data['username'],time() + 24*60*60*365);
                 setcookie("password",$data['password'],time() + 24*60*60*365);
