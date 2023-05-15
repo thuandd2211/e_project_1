@@ -1,4 +1,5 @@
 <?php require_once('../controller/home_be.php');
+    session_start();
     $result = select_db();
     if ($result->num_rows > 0){
         while ($row = $result->fetch_assoc()){
@@ -33,12 +34,14 @@
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg" >
             <div class="container">
-                <a class="navbar-brand fw-bold" href="home.html">TRÀNG AN PLAZA</a>
+                <a class="navbar-brand fw-bold" href="home.php">TRÀNG AN PLAZA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -65,11 +68,33 @@
                             <a class="nav-link fw-bold" href="#">GALLERY</a>
                         </li>   
                         <li>
-                            <a class="nav-link fw-bold" href="#">LIÊN HỆ</a>
-                        </li>   
+                            <a class="nav-link fw-bold" href="about_us.php">ABOUT US</a>
+                        </li>
+                        <li>
+                            <a class="nav-link fw-bold" href="contact.php">LIÊN HỆ</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-2">
+                        <li class="nav-item dropdown">
+							<button class="btn btn-none dropdown-toggle fw-bold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user"></i></button> 
+								<ul class="dropdown-menu" style="background-color: rgb(191, 243, 243);"  aria-labelledby="dropdownMenuButton">
+									<?php
+                                        if (!isset($_SESSION['user'][0])){
+                                            echo '<li><a class="dropdown-item fw-bold" href="login.php">ĐĂNG NHẬP</a></li>
+                                            <li><a class="dropdown-item fw-bold" href="register.php">ĐĂNG KÍ</a></li>';
+                                        } else{
+                                            echo '<li><a class="dropdown-item fw-bold" href="#">TÀI KHOẢN</a></li>
+                                            <li><a class="dropdown-item fw-bold" href="../controller/logout.php">ĐĂNG XUẤT</a></li>';
+                                        }
+                                    
+                                    ?>						
+								</ul>
+						</li>
+                    </ul>
+                </div>
+            </div>  
     </nav>
     <div id="clear"></div>
     <main>
@@ -110,7 +135,7 @@
                 </div>
                 <div class="col-6">
                     <h1><?php echo $name[0]; ?></h1>
-                    <p><?php  echo $script[0]; ?> <br> <br> <?php echo $other[0]; ?></p>
+                    <p><?php  echo $script[0]; ?></p><p><?php echo $other[0]; ?></p>
 
                 </div>
             </div>
@@ -128,16 +153,16 @@
                         <img src="images/<?php echo $img[1]; ?>" alt="">
                     </div>
                     <div class="col-6">
-                        <h2><?php echo $name[1]; ?></h2>
-                        <span><?php echo $script[1]; ?></span>
+                        <h2><a href="#"><?php echo $name[1]; ?></a></h2>
+                        <p><?php echo $script[1]; ?></p>
                     </div>
                 </div>
             </section>
             <section id="section_3_2" class="container">
                 <div class="row container-fluid">
                     <div class="col-6">
-                        <h2><?php echo $name[2]; ?></h2>
-                        <span><?php echo $script[2]; ?></span>
+                        <h2><a href="#"><?php echo $name[2]; ?></a></h2>
+                        <p><?php echo $script[2]; ?></p>
                     </div>
                     <div class="col-6">
                         <img src="images/<?php echo $img[2]; ?>" alt="">
@@ -150,12 +175,13 @@
                         <img src="images/<?php echo $img[3]; ?>" alt="">
                     </div>
                     <div class="col-6">
-                        <h2><?php echo $name[3]; ?></h2>
-                        <span><?php echo $script[3]; ?></span>
+                        <h2><a href="#"><?php echo $name[3]; ?></a></h2>
+                        <p><?php echo $script[3]; ?></p>
                     </div>
                 </div>
             </section>
         </section>
+        <div id="clear"></div>
         <section id="section_4" class="container">
             <div class="container text-center" id="section_4_1">
                 <h1>DẤU ẤN TRÀNG AN PLAZA</h1>
@@ -167,48 +193,42 @@
                     <br>
                     <br>
                     <h5 class="container text-center"><?php echo $name[4]; ?></h5>
-                    <span class="container"><?php echo $script[4]; ?></span>
+                    <p><?php echo $script[4]; ?></p>
                 </div>
                 <div class="col-4 container-fluid">
                     <img src="images/<?php echo $img[5]; ?>" alt="">
                     <br>
                     <br>
                     <h5 class="container text-center"><?php echo $name[5]; ?></h5>
-                    <span><?php echo $script[5]; ?></span>
+                    <p><?php echo $script[5]; ?></p>
                 </div>
                 <div class="col-4 container-fluid">
                     <img src="images/<?php echo $img[6]; ?>" alt="">
                     <br>
                     <br>
                     <h5 class="container text-center"><?php echo $name[6]; ?></h5>
-                    <span><?php echo $script[6]; ?></span>
+                    <p><?php echo $script[6]; ?></p>
                 </div>
             </div>
-            <section id="section_5" class="container">
+        </section>    
+        <div id="clear"></div>
+        <section id="section_5" class="container">
                 <div class="container">
                     <h1 class="container text-center">ĐỐI TÁC</h1>
                 </div>
                 <br><br>
                 <div class="row container-fluid">
-                    <div class="col-3">
-                        <img src="images/<?php echo $image[0]; ?>" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="images/<?php echo $image[1]; ?>" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="images/<?php echo $image[2]; ?>" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="images/<?php echo $image[3]; ?>" alt="">
-                    </div>
-
+                    <?php
+                        foreach($image as $partner){
+                            echo "
+                                <div class='col-3 container'>
+                                    <img src='images/{$partner}'>
+                                </div>
+                            ";
+                        }
+                    ?>
                 </div>
-                
-            </section>
-            
         </section>
-          
     </main>
     <div id="clear"></div>
     <footer>
@@ -216,7 +236,7 @@
             <div class="row container-fluid ">
                 <div class="col-4">
                     <ul>
-                        <li><a href="home.html"><b>HOME</b></a></li>
+                        <li><a href="home.php"><b>HOME</b></a></li>
                         <li><a href="#">SẢNH TIỆC</a></li>
                         <li><a href="#">TIỆC CƯỚI & KỶ NIỆM</a></li>
                         <li><a href="#">TIỆC DOANH NGHIỆP</a></li>
@@ -226,10 +246,11 @@
                 </div>
                 <div class="col-4">
                     <ul>
-                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="contact.php">CONTACT</a></li>
                         <li>Phone: <?php echo $phone[0];  ?></li>
                         <li>Address: <?php echo $address[0]; ?></li>
                         <li>Email: <?php echo $email[0]; ?></li>
+                        <li><a href="about_us.php">ABOUT US</a></li>
                     </ul>
                 </div>
                 <div class="col-4">

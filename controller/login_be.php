@@ -27,7 +27,7 @@
         $result = check_username($data['username']);
         if ($result -> num_rows > 0){
             while ($row = $result -> fetch_assoc()){
-                if ($data['password'] !== $row['viewer_password']) {
+                if (!password_verify($data['password'], $row['viewer_password'])) {
                     $error['password'] = "Sai mật khẩu, vui lòng nhập lại.";
                 } 
                 if ($row['role_id'] == 1){
@@ -39,7 +39,7 @@
         
         }
         if (!$error){
-            $_SESSION['user'] = array($data['username'], $data['password']);
+            $_SESSION['user'] = array($data['username'], $data['password'], $row['id']);
             if (isset($_POST['remember'])){
                 setcookie("username",$data['username'],time() + 24*60*60*365);
                 setcookie("password",$data['password'],time() + 24*60*60*365);

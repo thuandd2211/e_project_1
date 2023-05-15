@@ -57,6 +57,7 @@
         $data['gender'] = isset($_POST['gender']) ? $_POST['gender'] : '';
         $data['email'] = isset($_POST['email']) ? $_POST['email'] : '';
         $data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : '';
+        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
         if (empty($data['fullname'])){
             $error['fullname'] = "Bạn chưa nhập tên.";
         }
