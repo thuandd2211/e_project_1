@@ -8,7 +8,7 @@
                         <li><a href="#">TIỆC CƯỚI & KỶ NIỆM</a></li>
                         <li><a href="#">TIỆC DOANH NGHIỆP</a></li>
                         <li><a href="#">TIỆC NGOÀI</a></li>
-                        <li><a href="#">GALLERY</a></li>
+                        <li><a href="gallery.php?page=1">GALLERY</a></li>
                     </ul>
                 </div>
                 <div class="col-4">

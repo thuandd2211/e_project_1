@@ -75,8 +75,8 @@
 
         <section id="section_2" class="container">
             <div class="row">
-                <div class="col-6">
-                    <img src="images/<?php echo $img[0]; ?>" alt="">
+                <div class="col-6 hover01"  style="position: relative;">
+                    <figure><img src="images/<?php echo $img[0]; ?>" alt=""></figure>
                 </div>
                 <div class="col-6">
                     <h1><?php echo $name[0]; ?></h1>
@@ -94,8 +94,8 @@
             
             <section id="section_3_1" class="container"> 
                 <div class="row container-fluid">
-                    <div class="col-6">
-                        <img src="images/<?php echo $img[1]; ?>" alt="">
+                    <div class="col-6 hover01" style="position: relative;">
+                        <figure><img src="images/<?php echo $img[1]; ?>" alt=""></figure>
                     </div>
                     <div class="col-6">
                         <h2><a href="#"><?php echo $name[1]; ?></a></h2>
@@ -109,15 +109,15 @@
                         <h2><a href="#"><?php echo $name[2]; ?></a></h2>
                         <p><?php echo $script[2]; ?></p>
                     </div>
-                    <div class="col-6">
-                        <img src="images/<?php echo $img[2]; ?>" alt="">
+                    <div class="col-6 hover01" style="position: relative;">
+                        <figure><img src="images/<?php echo $img[2]; ?>" alt=""></figure>
                     </div>
                 </div>
             </section>
             <section id="section_3_3" class="container">
                 <div class="row container-fluid">
-                    <div class="col-6"> 
-                        <img src="images/<?php echo $img[3]; ?>" alt="">
+                    <div class="col-6 hover01" style="position: relative;"> 
+                        <figure><img src="images/<?php echo $img[3]; ?>" alt=""></figure>
                     </div>
                     <div class="col-6">
                         <h2><a href="#"><?php echo $name[3]; ?></a></h2>

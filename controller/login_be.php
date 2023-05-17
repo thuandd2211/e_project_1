@@ -46,10 +46,12 @@
                 setcookie("username",$data['username'],time() + 24*60*60*365);
                 setcookie("password",$data['password'],time() + 24*60*60*365);
             }
-            if ($flag == 1){
-                header('location: admin.php');
+            if (isset($_SESSION['id_rev'])){
+                header("location: review.php?id=".$_SESSION['id_rev']);
+            } else if ($flag == 1 ){
+                header("location: admin.php");
             } else {
-                header('location: home.php');
+                header("location: home.php");
             }
             
         } 

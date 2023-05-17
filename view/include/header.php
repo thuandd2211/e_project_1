@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg" >
-            <div class="container-fluid ms-5 me-5">
-                <a class="navbar-brand fw-bold " href="home.php">TRÀNG AN PLAZA</a>
+            <div class="container-fluid ms-5 me-5" >
+                <a class="navbar-brand fw-bold" href="home.php">TRÀNG AN PLAZA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,7 +25,7 @@
                             <a class="nav-link fw-bold" href="#">TIỆC NGOÀI</a>
                         </li>  
                         <li>
-                            <a class="nav-link fw-bold" href="#">GALLERY</a>
+                            <a class="nav-link fw-bold" href="gallery.php?page=1">GALLERY</a>
                         </li>   
                         <li>
                             <a class="nav-link fw-bold" href="about_us.php">ABOUT US</a>
