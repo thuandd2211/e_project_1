@@ -1,38 +1,10 @@
-<?php require_once('../controller/banquet_hall_be.php');
-    session_start();
-    $result = select_db();
-    if ($result !== false && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $name[] = $row['home_display_name'];
-            $script[] = $row['home_display_script'];
-            $other[] = $row['home_display_other'];
-            $img[] = $row['home_display_image'];
-        }
-    }
-    
-    $result_partner = select_partner();
-    if ($result_partner !== false && $result_partner->num_rows > 0) {
-        while ($row_partner = $result_partner->fetch_assoc()) {
-            $image[] = $row_partner['partner_logo'];
-        }
-    }
-    
-    $result_contact = select_contact();
-    if ($result_contact !== false && $result_contact->num_rows > 0) {
-        while ($row_contact = $result_contact->fetch_assoc()) {
-            $phone[] = $row_contact['phone'];
-            $address[] = $row_contact['address'];
-            $email[] = $row_contact['email'];
-        }
-    }
-?>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Sảnh tiệc</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/banquet_hall.css">
+    <link rel="stylesheet" href="css/hall.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -47,7 +19,7 @@
             <div id="carousel-intro" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/banquet_hall_1.jpg" class="blockd w-10"  alt="...">
+                    <img src="images/hall_1.jpg" class="blockd w-10"  alt="...">
                 <h1 class="section-title section-title-center"> SẢNH TIỆC - TRÀNG AN PLAZA TÂN PHÚ</h1>
                 <h2>BIẾN HÓA TRONG TỪNG</h2>
                 <h2>CHI TIẾT</h2> 
@@ -65,32 +37,32 @@
         <section id="section_2" class="container">
             <div class="row">
                 <div class="col-4">
-                    <img src="images/banquet_hall_2.png" class="img-fluid " alt="">
+                    <img src="images/hall_2.png" class="img-fluid " alt="">
                     <p>KHÔNG GIAN ĐA CHỨC NĂNG VỚI 8 SẢNH TIỆC ĐA DẠNG TỪNG SẢNH</p>
                     
                 </div>
                 <div class="col-4">
-                    <img src="images/banquet_hall_3.png" class="img-fluid " alt="">
+                    <img src="images/hall_3.png" class="img-fluid " alt="">
                     <p>HỆ THỐNG SẢNH VÀ SẢNH CHỜ RIÊNG BIỆT TẠO KHÔNG GIAN RIÊNG TƯ</p>
             
                 </div>
                 <div class="col-4">
-                    <img src="images/banquet_hall_4.png" class="img-fluid " alt="">
+                    <img src="images/hall_4.png" class="img-fluid " alt="">
                     <p>ĐỘI NGŨ HÀNG TRĂM NHÂN SỰ CÓ KHẢ NĂNG PHỤC VỤ CÙNG LÚC 3000 KHÁCH</p>
                     
                 </div>
         <section id="section_3" class="container">      
         <div class="row">
                 <div class="col-4">
-                    <img src="images/banquet_hall_5.jpg" class="img-fluid " alt="">
+                    <img src="images/hall_5.jpg" class="img-fluid " alt="">
                     <p>HỆ THỐNG ÂM THANH ÁNH SÁNG CAO CẤP</p>
                 </div>
                 <div class="col-4">
-                    <img src="images/banquet_hall_6.jpg" class="img-fluid " alt="">
+                    <img src="images/hall_6.jpg" class="img-fluid " alt="">
                     <p>MÀN HÌNH LED HIỆN ĐẠI</p>
                 </div>
                 <div class="col-4">
-                    <img src="images/banquet_hall_7.jpg" class="img-fluid " alt="">
+                    <img src="images/hall_7.jpg" class="img-fluid " alt="">
                     <p>TRANG THIẾT BỊ TIÊU CHUẨN 5 SAO</p>
                 </div>
                 <h1>KHÁM PHÁ</h1>
@@ -98,8 +70,8 @@
         <section id="section_4" class="container"> 
         <div class="row">
                 <div class="col-12">   
-                    <img src="images/banquet_hall_8.jpg"  alt="Ảnh minh họa">
-                    <img src="images/banquet_hall_9.jpg"  alt="Ảnh minh họa">
+                    <img src="images/hall_8.jpg"  alt="Ảnh minh họa">
+                    <img src="images/hall_9.jpg"  alt="Ảnh minh họa">
 
     </div>
     </main>
