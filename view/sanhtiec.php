@@ -4,47 +4,22 @@
   <title>Sảnh tiệc</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/banquet_hall.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <style>
-    .fakeimg {
-      height: 200px;
-      background: #aaa;
-    }
-    .container {
-      margin:  auto; 
-      max-width: 960px; 
-    }
-    nav {
-    background-color: rgb(191, 243, 243); 
-    }
-    footer{
-    padding-top: 20px;
-    top:100px;
-    position: relative;
-    width: 100%;
-    height: 450px;
-    background-color:  #6c7a86 ;
-    }
-    footer ul li{
-    list-style-type: none;
-    padding: 10px;
-    color: white;
-    }
-    footer a{
-    text-decoration: none;
-    color: white;
-    }
-
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
-<nav  class="navbar fixed-top navbar-expand-lg" >
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="home.html">TRÀNG AN PLAZA</a>
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg" >
+            <div class="container-fluid ms-5 me-5">
+                <a class="navbar-brand fw-bold " href="home.php">TRÀNG AN PLAZA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -71,12 +46,37 @@
                             <a class="nav-link fw-bold" href="#">GALLERY</a>
                         </li>   
                         <li>
-                            <a class="nav-link fw-bold" href="#">LIÊN HỆ</a>
-                        </li>   
+                            <a class="nav-link fw-bold" href="about_us.php">ABOUT US</a>
+                        </li>
+                        <li>
+                            <a class="nav-link fw-bold" href="contact.php">LIÊN HỆ</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-2">
+                        <li class="nav-item dropdown" >
+									<?php
+                                        if (!isset($_SESSION['user'][0])){
+                                            echo "<button class='btn btn-none dropdown-toggle fw-bold me-2' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'><i class='fa-solid fa-user'></i></button> 
+                                            <ul class='dropdown-menu' style='background-color: rgb(191, 243, 243);'  aria-labelledby='dropdownMenuButton'>
+                                            <li><a class='dropdown-item fw-bold' href='login.php'>ĐĂNG NHẬP</a></li>
+                                            <li><a class='dropdown-item fw-bold' href='register.php'>ĐĂNG KÍ</a></li>";
+                                        } else{
+                                            echo "<button class='btn btn-none dropdown-toggle fw-bold ' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'><i class='fa-solid fa-user'></i> {$_SESSION['user'][3]}</button> 
+                                            <ul class='dropdown-menu' style='background-color: rgb(191, 243, 243);'  aria-labelledby='dropdownMenuButton'>
+                                            <li><a class='dropdown-item fw-bold' href='#'>TÀI KHOẢN</a></li>
+                                            <li><a class='dropdown-item fw-bold' href='../controller/logout.php'>ĐĂNG XUẤT</a></li>";
+                                        }
+                                    
+                                    ?>						
+								</ul>
+						</li>
+                    </ul>
+                </div>
+            </div>  
     </nav>
+</header>
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-12">
