@@ -49,16 +49,15 @@
     <div id="clear"></div>
     <main>
         <h1>GALLERY</h1>
-        <section id="section_1" class="container"> 
-            <div class='container row mb-5'>   
+        <section id="section_1" class="container" style="display: flex;"> 
+            <div class='container row mb-5' style="display:block;">   
             <?php 
                 for ($i = 0; $i < count($id) ; $i++){
-                    if (($i+1) % 3 != 0){
-                        echo "
-                            <div class='col-4 gallery container hover01'  style='position: relative;'>
+                    echo "
+                            <div class='col-4 gallery container hover01'  style='position: relative; margin-bottom:20px'>
                                 <div class='script'>
                                     <a href='../view/review.php?id={$id[$i]}' style='text-decoration: none;'>
-                                        <figure><img src='images/review_1/{$image[$i]}'></figure>
+                                        <figure><img src='images/review/{$image[$i]}'></figure>
                                         <div class='desc container'>
                                             <p class='content'>{$title[$i]}</p>
                                             <p style='font-size:smaller;'>
@@ -69,24 +68,6 @@
                                 </div>
                             </div>
                         ";
-                    } else {
-                        echo "
-                            <div class='col-4 gallery container hover01'  style='position: relative;'>
-                                <div class='script'>
-                                    <a href='../view/review.php?id={$id[$i]}' style='text-decoration: none;'>
-                                        <figure><img src='images/review_1/{$image[$i]}'></figure>
-                                        <div class='desc container'>
-                                            <p class='content'>{$title[$i]}</p>
-                                            <p style='font-size:smaller;'>
-                                                <i class='fa-solid fa-calendar'></i> {$time[$i]}     <i class='fa-solid fa-marker'></i> {$author[$i]}
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>"; 
-                        echo "<div class='container row mb-5'>";                        
-                    } 
                 }
                 
             ?>

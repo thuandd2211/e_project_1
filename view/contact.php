@@ -57,9 +57,16 @@
                     <br>
                     <p>Address: <?php echo $address[0]; ?></p>
                     <p>Phone: <?php echo $phone[0];  ?></p>
-                    <p>Email: <?php echo $email[0]; ?></p>
+                    <p>Email: <a href="mailto:admin@mail.com"><?php echo $email[0]; ?></a></p>
                 </div> 
             </div> 
+        </section>
+        <section id="section_2">
+            <h1>ADDRESS</h1>
+            <div class="container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232.73540732168308!2d105.84508406712065!3d21.042026250464826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abba0d983d19%3A0x71e0663c68743fbf!2zS2jDoWNoIFPhuqFuIFRyw6BuZyBBbiBQbGF6YQ!5e0!3m2!1sen!2s!4v1682623477627!5m2!1sen!2s" width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
         </section>
 
     </main>

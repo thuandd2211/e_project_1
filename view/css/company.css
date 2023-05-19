@@ -1,0 +1,153 @@
+main{
+    width: 100%;
+    height: fit-content;
+    margin-top: 75px;
+}
+#section_1 {
+    width: 100%;
+    height: fit-content;
+}
+#section_1 img{
+    width: 100%;
+    height: 600px;
+}
+#section_2 {
+    width: 100%;
+    height: fit-content;
+    margin-top: 75px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+#section_2 h1{
+     color:rgb(226, 36, 36);
+    text-align: center;
+    padding-bottom: 40px;
+}
+#section_2 p,li{
+    text-align: justify;
+    line-height: 28px;
+}
+#section_3 {
+    width: 100%;
+    height: fit-content;
+    margin-top: 75px;
+}
+#section_3 h1{
+    color:rgb(226, 36, 36);
+    text-align: center;
+    padding-bottom: 40px;
+}
+#section_3 #section_3_2 p{
+    text-align: justify;
+    line-height: 25px;
+}
+#section_3 #section_3_2 img{
+    width: 100%;
+    height: 400px;
+}
+#section_3 figure {
+	width: 100%;
+	height: 400px;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+}
+
+.hover01 figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover01 figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+#section_4{
+    margin-top: 75px;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    background: #d2dce4;
+    padding-bottom: 75px;
+}
+#section_4 h1{
+    color:rgb(226, 36, 36);
+    text-align: center;
+}
+#section_4 #section_4_1{
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    text-align: justify;
+}
+
+#section_4 #section_4_1 img{
+    width: 100%;
+    height: 300px;
+}
+
+#section_4 #section_4_2{
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    text-align: justify;
+
+}
+
+#section_4 #section_4_2 img{
+    width: 100%;
+    height: 300px;
+}
+
+#section_4 #section_4_3{
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    text-align: justify;
+
+}
+
+#section_4 #section_4_3 img{
+    width: 100%;
+    height: 300px;
+}
+#section_4 #section_4_4{
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    text-align: justify;
+
+}
+
+#section_4 #section_4_4 img{
+    width: 100%;
+    height: 300px;
+}
+#section_4 figure {
+	width: 100%;
+	height: 300px;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+}
+#section_5{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    padding-top: 50px;
+}
+#section_5 h1{
+    color:rgb(226, 36, 36);
+}
+#section_5 img{
+    width: 70%;
+    height: 100px;
+}

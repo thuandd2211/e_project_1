@@ -6,9 +6,9 @@
         $section[$i] = select_about_us($i);
         if ($section[$i] -> num_rows > 0){
             while ($row[$i] = $section[$i] -> fetch_assoc()){
-                $title[$i][] = $row[$i]['about_us_display_title'];
-                $script[$i][] = $row[$i]['about_us_display_script'];
-                $image[$i][] = $row[$i]['about_us_display_image'];
+                $title[$i][] = $row[$i]['title'];
+                $script[$i][] = $row[$i]['script'];
+                $image[$i][] = $row[$i]['image'];
             }
         }
     }
@@ -42,7 +42,7 @@
     <div id="clear"></div>
     <main>
         <section id="section_1">
-            <img src="images/<?php echo $image[1][0]; ?>" alt="">
+            <img src="images/about_us/<?php echo $image[1][0]; ?>" alt="">
         </section>
         <section id="section_2" class="container">
             <h1><?php echo $title[2][0]; ?></h1>
@@ -67,25 +67,18 @@
         <section id="section_4" class="container">
             <h1><?php echo $title[4][0]; ?></h1>
             <div class="row container ">
-                <div class="col-4 container hover01" style="position: relative;">
-                    <a href="#">
-                        <figure><img src="images/<?php echo $image[4][0]; ?>" alt=""></figure>
-                        <div class="centered">Tiệc cưới</div>
-                    </a>
-
-                </div>
-                <div class="col-4 container hover01" style="position: relative;">
-                    <a href="">
-                        <figure><img src="images/<?php echo $image[4][1]; ?>" alt=""></figure>
-                        <div class="centered">Tiệc doanh nghiệp</div>
-                    </a>
-                </div>
-                <div class="col-4 container hover01" style="position: relative;">
-                    <a href="">
-                        <figure><img src="images/<?php echo $image[4][2]; ?>" alt=""></figure>
-                        <div class="centered">Tiệc cá nhân</div>
-                    </a>
-                </div>
+                <?php
+                    for ($j = 0; $j < count($image[4]); $j ++){
+                        echo "
+                            <div class='col-4 container hover01' style='position: relative;'>
+                                <a href='#'>
+                                    <figure><img src='images/about_us/{$image[4][$j]}'></figure>
+                                    <div class='centered'>{$script[4][$j]}</div>
+                                </a>
+                            </div>
+                        ";
+                    }
+                ?>
             </div>
         </section>
         <section id="section_5" class="container">

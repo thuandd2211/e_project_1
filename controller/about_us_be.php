@@ -9,7 +9,7 @@
     }
     function select_about_us($id){
         $conn = connect_db();
-        $sql = "SELECT * FROM about_us_display WHERE about_us_display_title_id = ?";
+        $sql = "SELECT about_us_title.about_us_title as title, about_us_script.about_us_script as script, about_us_script.about_us_image as image FROM about_us_title JOIN about_us_script ON about_us_script.about_us_title_id = about_us_title.id WHERE about_us_script.about_us_title_id = ? ";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param("i",$about_id);
         $about_id = $id;

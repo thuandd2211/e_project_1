@@ -39,6 +39,7 @@ main #section_3 {
     font-size: 30px;
     font-weight: 500;
     color: black;
+    width: max-content;
   }
 main #section_4 h1{
     font-size: 50px;

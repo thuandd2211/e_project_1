@@ -57,7 +57,6 @@
         $data['gender'] = isset($_POST['gender']) ? $_POST['gender'] : '';
         $data['email'] = isset($_POST['email']) ? $_POST['email'] : '';
         $data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : '';
-        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
         if (empty($data['fullname'])){
             $error['fullname'] = "Bạn chưa nhập tên.";
         }
@@ -68,9 +67,6 @@
         }
         if (empty($data['password'])){
             $error['password'] = "Bạn chưa nhập mật khẩu.";
-        }
-        if (empty($data['gender'])){
-            $error['gender'] = "Bạn chưa nhập giới tính.";
         }
         if (empty($data['email'])){
             $error['email'] = "Bạn chưa nhập email.";
@@ -86,15 +82,15 @@
         } else if (check_phone($data['phone']) === 1){
             $error['phone'] = "Số điện thoại đã tồn tại, vui lòng nhập số điện thoại khác.";
         }
+        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
         if (!$error){
             $conn = connect_db();
-            $sql = "INSERT INTO viewer (viewer_username, viewer_password, viewer_name, viewer_gender, viewer_email, viewer_phone) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO viewer (viewer_username, viewer_password, viewer_name, viewer_email, viewer_phone) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt -> bind_param("ssssss",$username,$password,$fullname,$gender,$email,$phone);
+            $stmt -> bind_param("ssssss",$username,$password,$fullname,$email,$phone);
             $fullname = $data['fullname'];
             $username = $data['username'];
             $password = $data['password'];
-            $gender = $data['gender'];
             $email = $data['email'];
             $phone = $data['phone'];
             if ($stmt -> execute() === TRUE){

@@ -7,13 +7,19 @@ main{
 
 main #section_2{
     width: 100%;
-    height: 500px;
+    height: fit-content;
     background-color:  rgb(191, 243, 243);
+    padding: 50px;
 }
 main #section_2 h1{
-    padding-top: 180px;
-    font-size: 90px;
+    padding-bottom: 30px;
     color: rgb(226, 36, 36) ;
+    text-align: center;
+}
+main #section_2 iframe{
+    width: 100%;
+    height: 500px;
+    text-align: center;
 }
 main #section_1{
     height: fit-content;
@@ -87,3 +93,4 @@ footer a{
     text-decoration: none;
     color: white;
 }
+

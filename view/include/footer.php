@@ -4,10 +4,10 @@
                 <div class="col-4">
                     <ul>
                         <li><a href="home.php"><b>HOME</b></a></li>
-                        <li><a href="#">SẢNH TIỆC</a></li>
-                        <li><a href="#">TIỆC CƯỚI & KỶ NIỆM</a></li>
-                        <li><a href="#">TIỆC DOANH NGHIỆP</a></li>
-                        <li><a href="#">TIỆC NGOÀI</a></li>
+                        <li><a href="hall.php">SẢNH TIỆC</a></li>
+                        <li><a href="wedding.php">TIỆC CƯỚI & KỶ NIỆM</a></li>
+                        <li><a href="company.php">TIỆC DOANH NGHIỆP</a></li>
+                        <li><a href="outdoor.php">TIỆC NGOÀI</a></li>
                         <li><a href="gallery.php?page=1">GALLERY</a></li>
                     </ul>
                 </div>

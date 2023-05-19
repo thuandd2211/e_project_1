@@ -16,30 +16,108 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `about_us_display`
+-- Table structure for table `about_us_script`
 --
 
-DROP TABLE IF EXISTS `about_us_display`;
+DROP TABLE IF EXISTS `about_us_script`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `about_us_display` (
+CREATE TABLE `about_us_script` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `about_us_display_title` varchar(45) DEFAULT NULL,
-  `about_us_display_title_id` int(11) DEFAULT NULL,
-  `about_us_display_script` text,
-  `about_us_display_image` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `about_us_title_id` int(11) DEFAULT NULL,
+  `about_us_script` text,
+  `about_us_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `about_us_title_id_idx` (`about_us_title_id`),
+  CONSTRAINT `about_us_title_id` FOREIGN KEY (`about_us_title_id`) REFERENCES `about_us_title` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `about_us_display`
+-- Dumping data for table `about_us_script`
 --
 
-LOCK TABLES `about_us_display` WRITE;
-/*!40000 ALTER TABLE `about_us_display` DISABLE KEYS */;
-INSERT INTO `about_us_display` VALUES (1,'section1',1,NULL,'wedding_7.jpg'),(2,'VỀ CHÚNG TÔI',2,'Chặng đường 12 năm xây dựng và phát triển (2010-2022), <b>Tràng An Plaza</b> tự hào là một trong những đơn vị tổ chức sự kiện chuyên nghiệp, uy tín hàng đầu. Chúng tôi luôn nỗ lực với sứ mệnh gắn kết đội ngũ nhân sự toàn diện, đưa hình ảnh, thương hiệu của doanh nghiệp bạn tới gần hơn với khách hàng, đối tác bằng những sự kiện ấn tượng, ý nghĩa cùng mức chi phí hợp lý nhất.',NULL),(3,'section3',3,'Trên 12 năm hoạt động',NULL),(4,NULL,3,'Hơn 100 nhân sự giàu kinh nghiệm',NULL),(5,NULL,3,'Tổ chức hơn 100 sự kiện mỗi năm',NULL),(6,'DỊCH VỤ',4,'Tiệc cưới','wedding_8.jpg'),(7,NULL,4,'Tiệc doanh nghiệp','company_2.jpg'),(8,NULL,4,'Tiệc cá nhân','outdoor_2.jpg'),(9,NULL,5,'Sự hài lòng của khách hàng là niềm vinh hạnh của chúng tôi!',NULL);
-/*!40000 ALTER TABLE `about_us_display` ENABLE KEYS */;
+LOCK TABLES `about_us_script` WRITE;
+/*!40000 ALTER TABLE `about_us_script` DISABLE KEYS */;
+INSERT INTO `about_us_script` VALUES (1,1,NULL,'wedding_7.jpg'),(2,2,'Chặng đường 12 năm xây dựng và phát triển (2010-2022), <b>Tràng An Plaza</b> tự hào là một trong những đơn vị tổ chức sự kiện chuyên nghiệp, uy tín hàng đầu. Chúng tôi luôn nỗ lực với sứ mệnh gắn kết đội ngũ nhân sự toàn diện, đưa hình ảnh, thương hiệu của doanh nghiệp bạn tới gần hơn với khách hàng, đối tác bằng những sự kiện ấn tượng, ý nghĩa cùng mức chi phí hợp lý nhất.',NULL),(3,3,'Trên 12 năm hoạt động',NULL),(4,3,'Hơn 100 nhân sự giàu kinh nghiệm',NULL),(5,3,'Tổ chức hơn 100 sự kiện mỗi năm',NULL),(6,4,'Tiệc cưới','wedding_8.jpg'),(7,4,'Tiệc doanh nghiệp','company_2.jpg'),(8,4,'Tiệc cá nhân','outdoor_2.jpg'),(9,5,'Sự hài lòng của khách hàng là niềm vinh hạnh của chúng tôi!',NULL);
+/*!40000 ALTER TABLE `about_us_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `about_us_title`
+--
+
+DROP TABLE IF EXISTS `about_us_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `about_us_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `about_us_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `about_us_title`
+--
+
+LOCK TABLES `about_us_title` WRITE;
+/*!40000 ALTER TABLE `about_us_title` DISABLE KEYS */;
+INSERT INTO `about_us_title` VALUES (1,'Intro'),(2,'VỀ CHÚNG TÔI'),(3,'Kinh nghiệm'),(4,'DỊCH VỤ'),(5,'slogan');
+/*!40000 ALTER TABLE `about_us_title` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `company_script`
+--
+
+DROP TABLE IF EXISTS `company_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `company_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_title_id` int(11) DEFAULT NULL,
+  `company_script_title` text,
+  `company_script` text,
+  `company_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `company_title_id_idx` (`company_title_id`),
+  CONSTRAINT `company_title_id` FOREIGN KEY (`company_title_id`) REFERENCES `company_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_script`
+--
+
+LOCK TABLES `company_script` WRITE;
+/*!40000 ALTER TABLE `company_script` DISABLE KEYS */;
+INSERT INTO `company_script` VALUES (1,1,NULL,NULL,'company_1.jpg'),(2,2,NULL,'Là điểm sáng trên bản đồ sự kiện khu vực phía tây Hà Thành, Tràng An Plaza sở hữu những yếu tố quyết định góp phần quan trọng vào tính khả thi và sự thành công của những sự kiện doanh nghiệp, có thể kể đến là:',NULL),(3,2,NULL,'Các sảnh sự kiện đậm tính thẩm mỹ với hệ thống âm thanh – ánh sáng – tiện ích tối tân cho mọi sáng tạo',NULL),(4,2,NULL,'Khả năng tư vấn – hoạch định – triển khai các loại hình set-up chuyên dụng',NULL),(5,2,NULL,'Lựa chọn F&B và ẩm thực cao cấp để nhà tổ chức mang đến những trải nghiệp tốt nhất cho khách mời.',NULL),(6,2,NULL,'Sự linh hoạt của đội ngũ nhân viên, định hướng đến những trải nghiệm cao cấp',NULL),(7,3,'SỰ KIỆN CÔNG TY','Những buổi tiệc trang trọng nhưng không kém phần bùng nổ tại Tràng An Plaza là cơ hội để các thương hiệu lan tỏa bản sắc và câu chuyện của mình. Chúng tôi sẽ cùng bạn chuyên chở ý nghĩa tri ân, ghi nhận, chúc mừng, đánh dấu khởi đầu mới hay nhìn lại hành trình, thành quả đã đạt được bằng những dịch vụ tiệc có chất lượng trên cả mong đợi.','company_2.jpg'),(8,3,'HỘI NGHỊ TRỌN GÓI','Qua các gói hội nghị nửa ngày, hội nghị trọn ngày được thiết kế sẵn, bám sát theo nội dung, Tràng An Plaza mang đến sự hỗ trợ tối ưu phù hợp với nhu cầu của đơn vị tổ chức. Cụ thể, khả năng tối ưu hóa không gian bằng nhiều loại hình set-up tùy biến phối hợp, dịch vụ ẩm thực – F&B tinh tế sẽ bổ trợ cho buổi tọa đàm, thảo luận của các nhóm chuyên môn thêm thuận lợi và suôn sẻ.','company_3.jpg'),(9,3,'THUÊ ĐỊA ĐIỂM','Không gian đa sắc diện tại Tràng An Plaza đầy lý tưởng để những sáng tạo từ bản phác họa giấy được hiện thực hóa trong những sự kiện hoành tráng. Quá trình kiếm tìm giải pháp, thực thi của nhà tổ chức sẽ luôn có sự đồng hành kề cận của đội ngũ Tràng An Plaza, bằng tất cả sự tận tâm và nghiệp vụ chuyên nghiệp.','company_4.jpg'),(10,4,'HỘI NGHỊ HỘI THẢO','Những đường nét quyến rũ và công năng thực tiễn luôn được đảm bảo đã biến Tràng An Plaza thành địa điểm có khả năng biến hóa linh hoạt đáp ứng mọi ý tưởng từ hội thảo chuyên đề quy mô nhỏ ấm cúng vài chục khách đến các buổi hội nghị kinh doanh','company_5.jpg'),(11,4,'TIỆC CHIÊU ĐÃI','Dạ tiệc chiêu đãi, tri ân, họp mặt sẽ là món quà cho chính tổ chức, công ty chia sẻ niềm vui ấy với tất cả đồng nghiệp nhân viên hay đối tác thân thiết. Tràng An Plaza luôn đồng hành kế hoạch tổ chức gắn liền với tinh thần và hình ảnh của công ty.','company_6.jpg'),(12,4,'RA MẮT DỰ ÁN','Tìm kiếm không gian vừa đủ để trưng bày, tối ưu ngân sách nhưng triển khai các ý tưởng cô đọng nhất? Lựa chọn nào cho những nhà tổ chức tin tưởng gửi gắm “đứa con tinh thần” của mình trong buổi đầu ra mắt sản phẩm đến công chúng. Câu trả lời sẽ được tìm thấy tại Tràng An Plaza – nơi tiềm năng được nâng tầm đến thành công.','company_7.jpg'),(13,4,'QUAY PHIM - MV','Bất kỳ nghệ sỹ hay nhà tổ chức nào cũng đều mong muốn giới thiệu đến công chúng những thành quả sáng tạo của mình dưới hình hài chỉn chu nhất. Dưới hiệu quả từ hệ thống ánh sáng và âm thanh chuẩn 5 sao, Tràng An Plaza sẽ trở thành một sân khấu chuyên nghiệp nơi các nghệ sỹ được thăng hoa và truyền tải trọn vẹn ý đồ nghệ thuật của buổi biểu diễn.','company_8.jpg');
+/*!40000 ALTER TABLE `company_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `company_title`
+--
+
+DROP TABLE IF EXISTS `company_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `company_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_title`
+--
+
+LOCK TABLES `company_title` WRITE;
+/*!40000 ALTER TABLE `company_title` DISABLE KEYS */;
+INSERT INTO `company_title` VALUES (1,'Intro'),(2,'TIỆC DOANH NGHIỆP - TRÀNG AN PLAZA'),(3,'DỊCH VỤ SỰ KIỆN'),(4,'LOẠI HÌNH SỰ KIỆN');
+/*!40000 ALTER TABLE `company_title` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,6 +368,58 @@ INSERT INTO `gallery` VALUES (1,'TỔ CHỨC SỰ KIỆN TRUNG THU CHO THIẾU N
 UNLOCK TABLES;
 
 --
+-- Table structure for table `hall_display_script`
+--
+
+DROP TABLE IF EXISTS `hall_display_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `hall_display_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hall_display_title_id` int(11) DEFAULT NULL,
+  `hall_display_script` text,
+  `hall_display_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hall_display_title_id_idx` (`hall_display_title_id`),
+  CONSTRAINT `hall_display_title_id` FOREIGN KEY (`hall_display_title_id`) REFERENCES `hall_display_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hall_display_script`
+--
+
+LOCK TABLES `hall_display_script` WRITE;
+/*!40000 ALTER TABLE `hall_display_script` DISABLE KEYS */;
+INSERT INTO `hall_display_script` VALUES (1,2,'BIẾN HÓA TRONG TỪNG CHI TIẾT','hall_1.jpg'),(2,2,'Được tạo dựng theo phong cách kiến trúc chiết chung – sự giao thoa của nhiều nguồn cảm hứng kết hợp là chất định tính đặc trưng tạo nên phong cách của Tràng An Plaza. Bao phủ các sảnh sự kiện là sự giàu có của các chi tiết, hình khối hoa văn chạm khắc không trùng lặp. Tiếp đó, hình ảnh phản chiếu từ nền đá marble, hệ đèn pha lê còn tạo nên lớp ánh sáng đổ bóng phân bố uyển chuyển chiếu rọi những tác phẩm điêu khắc mang giá trị cao. Có thể thấy Tràng An Plaza là một địa điểm đầy phong thái cho buổi tiệc chiêu đãi và sự kiện của bạn.','hall_9.png'),(3,2,'Cùng với đó, hệ thống trang thiết bị âm thanh, ánh sáng, tiện ích vận hành cùng khả năng điều phối, sắp xếp đa dạng các loại hình set-up chính là những nhân tố quyết định làm nên sự nổi bật của địa điểm.',NULL),(4,3,'KHÔNG GIAN ĐA CHỨC NĂNG VỚI 8 SẢNH TIỆC ĐA DẠNG TỪNG SẢNH','hall_2.png'),(5,3,'HỆ THỐNG SẢNH VÀ SẢNH CHỜ RIÊNG BIỆT TẠO KHÔNG GIAN RIÊNG TƯ','hall_3.png'),(6,3,'ĐỘI NGŨ HÀNG TRĂM NHÂN SỰ CÓ KHẢ NĂNG PHỤC VỤ CÙNG LÚC 3000 KHÁCH','hall_4.png'),(7,3,'HỆ THỐNG ÂM THANH ÁNH SÁNG CAO CẤP','hall_5.jpg'),(8,3,'MÀN HÌNH LED HIỆN ĐẠI','hall_6.jpg'),(9,3,'TRANG THIẾT BỊ TIÊU CHUẨN 5 SAO','hall_7.jpg'),(11,4,NULL,'hall_8.jpg');
+/*!40000 ALTER TABLE `hall_display_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hall_display_title`
+--
+
+DROP TABLE IF EXISTS `hall_display_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `hall_display_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hall_display_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hall_display_title`
+--
+
+LOCK TABLES `hall_display_title` WRITE;
+/*!40000 ALTER TABLE `hall_display_title` DISABLE KEYS */;
+INSERT INTO `hall_display_title` VALUES (1,'INTRO'),(2,'SẢNH TIỆC - TRÀNG AN PLAZA'),(3,'VÌ SAO CHỌN CHÚNG TÔI'),(4,'KHÁM PHÁ');
+/*!40000 ALTER TABLE `hall_display_title` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `has_role`
 --
 
@@ -320,30 +450,56 @@ LOCK TABLES `has_role` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `home_display_script`
+-- Table structure for table `home_script`
 --
 
-DROP TABLE IF EXISTS `home_display_script`;
+DROP TABLE IF EXISTS `home_script`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `home_display_script` (
+CREATE TABLE `home_script` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `home_display_name` text,
-  `home_display_script` text,
-  `home_display_other` text,
-  `home_display_image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `home_title_id` int(11) DEFAULT NULL,
+  `home_script_title` text,
+  `home_script` text,
+  `home_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `home_title_id_idx` (`home_title_id`),
+  CONSTRAINT `home_title_id` FOREIGN KEY (`home_title_id`) REFERENCES `home_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `home_display_script`
+-- Dumping data for table `home_script`
 --
 
-LOCK TABLES `home_display_script` WRITE;
-/*!40000 ALTER TABLE `home_display_script` DISABLE KEYS */;
-INSERT INTO `home_display_script` VALUES (1,'TRÀNG AN PLAZA','Khởi đầu là một công ty tổ chức sự kiện với nhiều năm kinh nghiệm trong lĩnh vực tiệc cưới, <b>Tràng An Plaza</b> luôn cung cấp cho khách hàng những gói dịch vụ thông minh, tiết kiệm và tiện lợi, là giải pháp cho tất cả các cô dâu chú rể đang chuẩn bị cho ngày trọng đại của mình. Bên cạnh đó, Tràng An Plaza ngày càng mở rộng và phát triển đa dạng trong tất cả các sự kiện đặc biệt khác như tiệc sinh nhật, lễ kỉ niệm, tiệc doanh nghiệp … vẫn theo tiêu chí đem lại những dịch vụ tốt nhất dành cho khách hàng.','<b>Tràng An Plaza</b>, với sức mạnh kinh nghiệm của một tập thể đầy năng lực, tác phong chuyên nghiệp, tinh thần làm việc nghiêm túc. Nguồn nhân lực trẻ có sức sáng tạo không ngừng và gu thẩm mỹ nghệ thuật đa phong cách. Sự đầu tư có chiều sâu về đội ngũ nhân viên đầy sáng tạo cũng như hệ thống trang thiết bị chuyên nghiệp. Chúng tôi mang tới cho khách hàng không chỉ là sự thỏa mãn cho công việc mà còn là sự tin tưởng và hợp tác lâu dài. Đẳng cấp và khác biệt chỉ tại Tràng An Plaza các bạn sẽ có 1 đám cưới trong mơ, mang phong cách riêng của chính mình vì bạn xứng đáng với điều đó.','wedding_5.jpg'),(2,'TIỆC CƯỚI & KỶ NIỆM','Phút giây lắng đọng, ấm áp bên nhau chính là món quà tinh thần ý nghĩa nhất đánh dấu những mốc son mà bạn luôn mong muốn lưu giữ. Giao hòa trong bầu không khí là nét đẹp kiến trúc đắt giá để câu chuyện kéo dài giữa nhịp cảm xúc và thực đơn hấp dẫn khiến bữa tiệc lan tỏa tính gắn kết nhờ trải nghiệm vị giác.',NULL,'wedding_6.jpg'),(3,'TIỆC DOANH NGHIỆP','Tại Tràng An Plaza, những không gian đa dạng được kết cấu chặt chẽ cùng dịch vụ sự kiện trọn gói là tổng thể hoàn chỉnh để các nhà tổ chức tối ưu hóa kế hoạch của mình. Việc giảm tải gánh nặng tổ chức đồng nghĩa với khả năng tập trung hơn ở các khâu nội dung hay quảng bá.',NULL,'company_1.jpg'),(4,'TIỆC NGOÀI TRỜI','Thay vì bó hẹp không gian và lựa chọn của mình, tại sao bạn không đổi mới và phá cách cho bữa tiệc chiêu đãi cảm xúc của mình bằng việc lựa chọn không gian tổ chức tiệc cưới ngoài trời, hòa mình với thiên nhiên, với sắc xanh nhẹ nhàng mà bay bổng để gây ấn tượng mạnh mẽ với quan khách tham dự. Địa điểm tổ chức tiệc cưới ngoài trời rộng rãi, sang trọng đem đến buổi lễ thành hôn đáng nhớ nhất.',NULL,'outdoor_1.jpg'),(5,'KIẾN TRÚC CỔ ĐIỂN','Khung dáng đắp đá marble, phân bổ thêm những đường cong uốn cạnh, các sảnh tiệc lộ diện theo cá tính không trùng lặp.Tràng An Plaza không che giấu ý định tạo nên ấn tượng choáng ngợp cho bất kỳ ai ghé qua.',NULL,'architecture.jpg'),(6,'DỊCH VỤ THẤU HIỂU','Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng',NULL,'service_1.jpg'),(7,'DẤU ẤN ẨM THỰC','Các thực đơn tiệc buffet, tiệc tea-break, tiệc set-menu hay thực đơn tự chọn hài hòa trong cách kết hợp món, dễ tiếp cận đến khẩu vị bản địa nhưng vẫn đủ biến tấu làm thực khách bật lên lời khen tấm tắc.',NULL,'food_1.jpg');
-/*!40000 ALTER TABLE `home_display_script` ENABLE KEYS */;
+LOCK TABLES `home_script` WRITE;
+/*!40000 ALTER TABLE `home_script` DISABLE KEYS */;
+INSERT INTO `home_script` VALUES (1,1,NULL,NULL,'wedding_3.jpg'),(2,1,NULL,NULL,'wedding_2.png'),(3,1,NULL,NULL,'wedding_1.jpg'),(4,2,NULL,'Khởi đầu là một công ty tổ chức sự kiện với nhiều năm kinh nghiệm trong lĩnh vực tiệc cưới, <b>Tràng An Plaza</b> luôn cung cấp cho khách hàng những gói dịch vụ thông minh, tiết kiệm và tiện lợi, là giải pháp cho tất cả các cô dâu chú rể đang chuẩn bị cho ngày trọng đại của mình. Bên cạnh đó, Tràng An Plaza ngày càng mở rộng và phát triển đa dạng trong tất cả các sự kiện đặc biệt khác như tiệc sinh nhật, lễ kỉ niệm, tiệc doanh nghiệp … vẫn theo tiêu chí đem lại những dịch vụ tốt nhất dành cho khách hàng.<br> <b>Tràng An Plaza</b>, với sức mạnh kinh nghiệm của một tập thể đầy năng lực, tác phong chuyên nghiệp, tinh thần làm việc nghiêm túc. Nguồn nhân lực trẻ có sức sáng tạo không ngừng và gu thẩm mỹ nghệ thuật đa phong cách. Sự đầu tư có chiều sâu về đội ngũ nhân viên đầy sáng tạo cũng như hệ thống trang thiết bị chuyên nghiệp. Chúng tôi mang tới cho khách hàng không chỉ là sự thỏa mãn cho công việc mà còn là sự tin tưởng và hợp tác lâu dài. Đẳng cấp và khác biệt chỉ tại Tràng An Plaza các bạn sẽ có 1 đám cưới trong mơ, mang phong cách riêng của chính mình vì bạn xứng đáng với điều đó.','wedding_5.jpg'),(5,3,'TIỆC CƯỚI & KỶ NIỆM','Phút giây lắng đọng, ấm áp bên nhau chính là món quà tinh thần ý nghĩa nhất đánh dấu những mốc son mà bạn luôn mong muốn lưu giữ. Giao hòa trong bầu không khí là nét đẹp kiến trúc đắt giá để câu chuyện kéo dài giữa nhịp cảm xúc và thực đơn hấp dẫn khiến bữa tiệc lan tỏa tính gắn kết nhờ trải nghiệm vị giác.','wedding_6.jpg'),(6,3,'TIỆC DOANH NGHIỆP','Tại Tràng An Plaza, những không gian đa dạng được kết cấu chặt chẽ cùng dịch vụ sự kiện trọn gói là tổng thể hoàn chỉnh để các nhà tổ chức tối ưu hóa kế hoạch của mình. Việc giảm tải gánh nặng tổ chức đồng nghĩa với khả năng tập trung hơn ở các khâu nội dung hay quảng bá.','company_1.jpg'),(7,3,'TIỆC NGOÀI TRỜI','Thay vì bó hẹp không gian và lựa chọn của mình, tại sao bạn không đổi mới và phá cách cho bữa tiệc chiêu đãi cảm xúc của mình bằng việc lựa chọn không gian tổ chức tiệc cưới ngoài trời, hòa mình với thiên nhiên, với sắc xanh nhẹ nhàng mà bay bổng để gây ấn tượng mạnh mẽ với quan khách tham dự. Địa điểm tổ chức tiệc cưới ngoài trời rộng rãi, sang trọng đem đến buổi lễ thành hôn đáng nhớ nhất.','outdoor_1.jpg'),(8,4,'KIẾN TRÚC CỔ ĐIỂN','Khung dáng đắp đá marble, phân bổ thêm những đường cong uốn cạnh, các sảnh tiệc lộ diện theo cá tính không trùng lặp.Tràng An Plaza không che giấu ý định tạo nên ấn tượng choáng ngợp cho bất kỳ ai ghé qua.','architecture.jpg'),(9,4,'DỊCH VỤ THẤU HIỂU','Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng','service_1.jpg'),(10,4,'DẤU ẤN ẨM THỰC','Các thực đơn tiệc buffet, tiệc tea-break, tiệc set-menu hay thực đơn tự chọn hài hòa trong cách kết hợp món, dễ tiếp cận đến khẩu vị bản địa nhưng vẫn đủ biến tấu làm thực khách bật lên lời khen tấm tắc.','food_1.jpg');
+/*!40000 ALTER TABLE `home_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `home_title`
+--
+
+DROP TABLE IF EXISTS `home_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `home_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `home_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `home_title`
+--
+
+LOCK TABLES `home_title` WRITE;
+/*!40000 ALTER TABLE `home_title` DISABLE KEYS */;
+INSERT INTO `home_title` VALUES (1,'Intro'),(2,'TRÀNG AN PLAZA'),(3,'LĂNG KÍNH TRÀNG AN PLAZA'),(4,'DẤU ẤN TRÀNG AN PLAZA'),(5,'ĐỐI TÁC');
+/*!40000 ALTER TABLE `home_title` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -375,6 +531,112 @@ CREATE TABLE `is_partner` (
 LOCK TABLES `is_partner` WRITE;
 /*!40000 ALTER TABLE `is_partner` DISABLE KEYS */;
 /*!40000 ALTER TABLE `is_partner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oneyear_birthday_script`
+--
+
+DROP TABLE IF EXISTS `oneyear_birthday_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oneyear_birthday_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `oneyear_birthday_title_id` int(11) DEFAULT NULL,
+  `oneyear_birthday_script_title` text,
+  `oneyear_birthday_script` text,
+  `oneyear_birthday_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oneyear_birthday_title_id_idx` (`oneyear_birthday_title_id`),
+  CONSTRAINT `oneyear_birthday_title_id` FOREIGN KEY (`oneyear_birthday_title_id`) REFERENCES `oneyear_birthday_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oneyear_birthday_script`
+--
+
+LOCK TABLES `oneyear_birthday_script` WRITE;
+/*!40000 ALTER TABLE `oneyear_birthday_script` DISABLE KEYS */;
+INSERT INTO `oneyear_birthday_script` VALUES (1,1,NULL,NULL,'birth_1.jpg'),(2,2,NULL,'Gửi gắm niềm yêu thương, sự kỳ vọng của gia đình đối với các thành viên nhỏ vừa đến với cuộc sống này luôn được đong đầy trong ngày sinh nhật đầu tiên. Tại TRÀNG AN Plaza, hãy biến hóa những nguyên liệu yêu thương của bạn thành món quà tinh thần lớn lao mà bạn muốn dành tặng cho con như một viên kẹo ngọt ngào để đánh dấu bước chân đầu tiên bé xíu vào đời.','birth_9.png'),(3,3,NULL,'Nhìn lại hành trình một năm đầu đời, ta thấy không chỉ có đó sự lớn lên và thay đổi từng ngày của trẻ, mà còn chứa đựng rất nhiều khoảnh khắc, cảm xúc nơi cha mẹ và những người thân yêu. Một bữa tiệc thôi nôi vui tươi, với những mảng màu bung trải rực rỡ sẽ là mảnh ký ức hiện hữu chói lọi mãi về sau cho tất cả thành viên gia đình.','birth_2.jpg'),(4,3,NULL,'Trọn gói sự kiện thôi nôi bao gồm:',NULL),(5,3,NULL,'Dịch vụ ẩm thực',NULL),(6,3,NULL,'Gói trang trí',NULL),(7,3,NULL,'Chương trình biểu diễn',NULL),(8,4,NULL,'Các lựa chọn trang hoàng không gian cho phép Bố Mẹ tạo nên phong cách riêng cho bữa tiệc thôi nôi của con. Chọn chủ đề theo gam màu, theo nhân vật hay theo chính biệt danh của Bé? Cùng TRÀNG AN PLAZA khám phá thêm nhé.','birth_3.jpg'),(9,4,NULL,'','birth_4.jpg'),(10,4,NULL,'','birth_5.jpg'),(11,5,NULL,'Đa dạng lựa chọn từ những menu theo gói hoặc menu chọn món để Bố Mẹ lựa chọn. Mỗi món ăn đều được chế biến từ nguồn nguyên liệu tươi mới và phục vụ bởi phong thái chuyên nghiệp từ đội ngũ của TRÀNG AN PLAZA.','birth_6.jpg'),(12,5,NULL,NULL,'birth_7.jpg'),(13,5,NULL,NULL,'birth_8.jpg');
+/*!40000 ALTER TABLE `oneyear_birthday_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oneyear_birthday_title`
+--
+
+DROP TABLE IF EXISTS `oneyear_birthday_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oneyear_birthday_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `oneyear_birthday_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oneyear_birthday_title`
+--
+
+LOCK TABLES `oneyear_birthday_title` WRITE;
+/*!40000 ALTER TABLE `oneyear_birthday_title` DISABLE KEYS */;
+INSERT INTO `oneyear_birthday_title` VALUES (1,'Intro'),(2,'TIỆC THÔI NÔI - TRÀNG AN PLAZA'),(3,'TIỆC THÔI NÔI'),(4,'GÓI TRANG TRÍ TIỆC THÔI NÔI'),(5,'ẨM THỰC');
+/*!40000 ALTER TABLE `oneyear_birthday_title` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `outdoor_script`
+--
+
+DROP TABLE IF EXISTS `outdoor_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `outdoor_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `outdoor_title_id` int(11) DEFAULT NULL,
+  `outdoor_script_title` text,
+  `outdoor_script` text,
+  `outdoor_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `outdoor_title_id_idx` (`outdoor_title_id`),
+  CONSTRAINT `outdoor_title_id` FOREIGN KEY (`outdoor_title_id`) REFERENCES `outdoor_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `outdoor_script`
+--
+
+LOCK TABLES `outdoor_script` WRITE;
+/*!40000 ALTER TABLE `outdoor_script` DISABLE KEYS */;
+INSERT INTO `outdoor_script` VALUES (1,1,NULL,NULL,'outdoor_1.png'),(2,2,NULL,'Phối hợp ăn ý với yêu cầu riêng của nhà tổ chức, chúng tôi cung cấp trọn gói tiệc phục vụ tại chỗ (Outside Catering). Việc của bạn là chỉ cần chia sẻ với chúng tôi bất cứ địa điểm nào diễn ra sự kiện để TRÀNG AN PLAZA mang đến trải nghiệm hài lòng và yên tâm từ cung cách phục vụ chuyên nghiệp đến ẩm thực ấn tượng cho khách tham dự.','outdoor_2.png'),(3,3,'KHAI TRƯƠNG RA MẮT DỰ ÁN','Chúng tôi còn cung cấp giải pháp hoàn thiện cho các dịch vụ đặt tiệc Catering tại chỗ. Cho dù lễ khai trương hay ra mắt dự án diễn ra tại không gian trong nhà hay ngoài trời, hãy chia sẻ với chúng tôi kế hoạch của bạn.','outdoor_3.jpg'),(4,3,'LỄ KHỞI CÔNG','Luôn đồng hành cùng với các lễ khởi công, động thổ nhà máy, dự án bất động sản, bất cứ địa điểm nào diễn ra sự kiện của bạn, hãy để cung cách phục vụ chuyên nghiệp, ẩm thực ấn tượng từ TRÀNG AN PLAZA góp phần với khởi đầu mới thành công.','outdoor_4.jpg'),(5,3,'TIỆC NGOÀI TRỜI','Tiệc ngoài trời đa phong cách dành cho bất cứ cá nhân nào như tiệc cưới, lễ báo hỷ, sinh nhật. Hãy biến buổi dạ tiệc ngoài trời mang hơi thở thiên nhiên trong lành, thoáng đãng và tạo nên một dấu ấn riêng cùng trọn gói phục vụ Catering từ TRÀNG AN PLAZA.','outdoor_5.jpg');
+/*!40000 ALTER TABLE `outdoor_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `outdoor_title`
+--
+
+DROP TABLE IF EXISTS `outdoor_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `outdoor_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `outdoor_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `outdoor_title`
+--
+
+LOCK TABLES `outdoor_title` WRITE;
+/*!40000 ALTER TABLE `outdoor_title` DISABLE KEYS */;
+INSERT INTO `outdoor_title` VALUES (1,'Intro'),(2,'TIỆC NGOÀI - TRÀNG AN PLAZA'),(3,'DỊCH VỤ');
+/*!40000 ALTER TABLE `outdoor_title` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -461,6 +723,59 @@ INSERT INTO `partner_role` VALUES (1,'diamond'),(2,'platium'),(3,'gold'),(4,'sil
 UNLOCK TABLES;
 
 --
+-- Table structure for table `party_script`
+--
+
+DROP TABLE IF EXISTS `party_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `party_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `party_title_id` int(11) DEFAULT NULL,
+  `party_script_title` text,
+  `party_script` text,
+  `party_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `party_title_id_idx` (`party_title_id`),
+  CONSTRAINT `party_title_id` FOREIGN KEY (`party_title_id`) REFERENCES `party_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_script`
+--
+
+LOCK TABLES `party_script` WRITE;
+/*!40000 ALTER TABLE `party_script` DISABLE KEYS */;
+INSERT INTO `party_script` VALUES (1,1,NULL,NULL,'party_1.jpeg'),(2,2,NULL,'Lên kế hoạch và triển khai một ý tưởng thật mới lạ như một món quà bất ngờ dành tặng cho chính mình hay người thân, tại sao không? Từng cột mốc được ghi dấu qua từng buổi tiệc đầy cảm xúc sẽ chính là món quà tinh thần ý nghĩa nhất đánh dấu những mốc son mà bạn luôn mong muốn đóng khung và lưu giữ.','party_2.png'),(3,3,'TIỆC SINH NHẬT','Buổi tiệc của bạn sẽ nói lên bạn là ai và phong cách của bạn như thế nào? Vì thế đừng bỏ qua cơ hội khẳng định dấu ấn hay thương hiệu cá nhân của mình qua những buổi tiệc sinh nhật. TRÀNG AN PLAZA mang cảm giác ấm áp để bạn có thể tự tin khẳng định trong hành trình đánh dấu tuổi trẻ của chính mình.','party_3.jpg'),(4,3,'TIỆC KỈ NIỆM','Khi kỷ niệm ngày cưới của ba mẹ là ngày “lễ” của gia đình, một bữa tiệc kỷ niệm là không gian mà gia đình có những phút giây lắng đọng, thân mật bên nhau cùng các vị khách mời sẽ chính là món quà tinh thần ý nghĩa nhất đánh dấu những mốc son mà bạn luôn mong muốn đóng khung và lưu giữ.','party_4.jpg'),(5,3,'TIỆC MỪNG THỌ','Lễ mừng thọ luôn được duy trì và trở thành phong tục tập quán đẹp của người Việt. Đã đến lúc bạn dành tặng những gì tốt đẹp cho người thân yêu dấu trong khoảnh khắc một bữa tiệc mừng thọ báo hiếu đầy ý nghĩa.','party_5.jpg');
+/*!40000 ALTER TABLE `party_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_title`
+--
+
+DROP TABLE IF EXISTS `party_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `party_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `party_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_title`
+--
+
+LOCK TABLES `party_title` WRITE;
+/*!40000 ALTER TABLE `party_title` DISABLE KEYS */;
+INSERT INTO `party_title` VALUES (1,'Intro'),(2,'TIỆC CÁ NHÂN - TRÀNG AN PLAZA'),(3,'DỊCH VỤ');
+/*!40000 ALTER TABLE `party_title` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `performer`
 --
 
@@ -534,7 +849,7 @@ CREATE TABLE `rev_event` (
   KEY `gallery_id_idx` (`gallery_id`),
   CONSTRAINT `gallery_id` FOREIGN KEY (`gallery_id`) REFERENCES `gallery` (`id`),
   CONSTRAINT `viewer_id` FOREIGN KEY (`viewer_id`) REFERENCES `viewer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,7 +858,7 @@ CREATE TABLE `rev_event` (
 
 LOCK TABLES `rev_event` WRITE;
 /*!40000 ALTER TABLE `rev_event` DISABLE KEYS */;
-INSERT INTO `rev_event` VALUES (1,5,1,'etc','2023-05-14 21:28:08'),(2,5,1,'abc','2023-05-14 21:28:29'),(10,8,10,'nice','2023-05-16 17:56:35'),(11,8,10,'nice','2023-05-16 17:58:16'),(12,8,10,'opp','2023-05-16 17:58:42'),(13,8,10,'opp','2023-05-16 17:58:54'),(14,8,10,'opp','2023-05-16 18:02:37'),(15,8,9,'nice','2023-05-16 18:46:35'),(16,8,9,'opp','2023-05-16 18:47:17');
+INSERT INTO `rev_event` VALUES (1,5,1,'etc','2023-05-14 21:28:08'),(2,5,1,'abc','2023-05-14 21:28:29'),(10,8,10,'nice','2023-05-16 17:56:35'),(11,8,10,'nice','2023-05-16 17:58:16'),(12,8,10,'opp','2023-05-16 17:58:42'),(13,8,10,'opp','2023-05-16 17:58:54'),(14,8,10,'opp','2023-05-16 18:02:37'),(15,8,9,'nice','2023-05-16 18:46:35'),(16,8,9,'opp','2023-05-16 18:47:17'),(17,8,7,'nice','2023-05-19 07:09:26');
 /*!40000 ALTER TABLE `rev_event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -613,7 +928,6 @@ CREATE TABLE `viewer` (
   `viewer_username` varchar(15) DEFAULT NULL,
   `viewer_password` varchar(200) DEFAULT NULL,
   `viewer_name` varchar(255) DEFAULT NULL,
-  `viewer_gender` varchar(45) DEFAULT NULL,
   `viewer_email` varchar(255) DEFAULT NULL,
   `viewer_phone` int(10) DEFAULT NULL,
   `role_id` int(11) DEFAULT '2',
@@ -629,8 +943,61 @@ CREATE TABLE `viewer` (
 
 LOCK TABLES `viewer` WRITE;
 /*!40000 ALTER TABLE `viewer` DISABLE KEYS */;
-INSERT INTO `viewer` VALUES (5,'thuandang1122','thuan123','Thuan Dang','male','thuan@apteach.vn',332834012,2),(6,'admin','thuan1234','Thuan Dang','male','thuan1@apteach.vn',332834011,1),(7,'thuan123','12345678','Thuan Dang','male','thuan123@apteach.vn',332834013,2),(8,'thuan221100','$2y$10$d2QTlvfILqtpC9vPcDaHXONbbIG26vZSCFUyRyRX.AFDCutQBCv3m','thuan','male','thuan@contact.vn',123456789,2);
+INSERT INTO `viewer` VALUES (5,'thuandang1122','thuan123','Thuan Dang','thuan@apteach.vn',332834012,2),(6,'admin','thuan1234','Thuan Dang','thuan1@apteach.vn',332834011,1),(7,'thuan123','12345678','Thuan Dang','thuan123@apteach.vn',332834013,2),(8,'thuan221100','$2y$10$d2QTlvfILqtpC9vPcDaHXONbbIG26vZSCFUyRyRX.AFDCutQBCv3m','thuan','thuan@contact.vn',123456789,2);
 /*!40000 ALTER TABLE `viewer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wedding_script`
+--
+
+DROP TABLE IF EXISTS `wedding_script`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `wedding_script` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wedding_title_id` int(11) DEFAULT NULL,
+  `wedding_script_title` text,
+  `wedding_script` text,
+  `wedding_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `wedding_title_id_idx` (`wedding_title_id`),
+  CONSTRAINT `wedding_title_id` FOREIGN KEY (`wedding_title_id`) REFERENCES `wedding_title` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wedding_script`
+--
+
+LOCK TABLES `wedding_script` WRITE;
+/*!40000 ALTER TABLE `wedding_script` DISABLE KEYS */;
+INSERT INTO `wedding_script` VALUES (1,1,NULL,NULL,'wedding_1.jpg'),(2,2,NULL,'Lãng mạn là hương vị không thể thiếu trong tình yêu. Tựa như những cái chạm nhẹ và đầy tinh tế nhất vào trái tim của mỗi con người, khi đứng trong không gian của sảnh tiệc cưới đầy lãng mạn, những cảm xúc như được gợi mở ra. Vào chính thời điểm đó, người tham dự tiệc tại Tràng An Plaza chỉ quan tâm một điều duy nhất, đó là lắng nghe những rung động thổn thức trong tâm hồn mình.','wedding_2.png'),(3,3,NULL,'Bản kế hoạch cưới của các cặp đôi sẽ trở nên dễ chịu và nhẹ nhàng hơn rất nhiều với sự đồng hành của TRÀNG AN PLAZA. Bởi vì có đó sự phối xếp chuẩn xác của quá trình tư vấn-điều phối, đa dạng dịch vụ tiệc trọn gói với mức chi phí thấu hiểu, khả năng nắm bắt những xu hướng mới nhất và sự bảo chứng được khẳng định từ thương hiệu. Sự tròn vẹn trong mọi khía cạnh tổ chức cưới đang chờ đợi các cặp đôi, hãy chọn cho mình một phong cách và chúng tôi sẽ biến tiệc cưới trong mơ thành hiện thực.','wedding_3.jpg'),(4,3,NULL,'Trọn gói tiệc cưới bao gồm',NULL),(5,3,NULL,'Thực đơn tiệc tự chọn – Set menu',NULL),(6,3,NULL,'Chương trình tiệc tiêu chuẩn',NULL),(7,3,NULL,'Dịch vụ trang trí',NULL),(8,3,NULL,'Chương trình biểu diễn',NULL),(9,4,NULL,'Thanh lịch hay lộng lẫy? Các chuyên viên trang trí của TRÀNG AN PLAZA biết cách tạo nên bức tranh hoàn hiện về ngày trọng đại mà bất kỳ cặp đôi nào cũng kỳ vọng.','wedding_4.jpg'),(10,4,NULL,NULL,'wedding_5.jpg'),(11,4,NULL,NULL,'wedding_6.jpg'),(12,5,NULL,'Nếu yêu thích phong cách ẩm thực đương đại- Fusion, các cặp đôi có thể cho khách mời bắt đầu thử nghiệm khẩu vị tại TRÀNG AN PLAZA. Hãy để vị bếp trưởng tài ba của chúng tôi dẫn dắt bạn và khách mời trong chuyến du ngoạn vị giác đáng nhớ!','wedding_7.jpg'),(13,5,NULL,NULL,'wedding_8.jpg'),(14,5,NULL,NULL,'wedding_9.jpg');
+/*!40000 ALTER TABLE `wedding_script` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wedding_title`
+--
+
+DROP TABLE IF EXISTS `wedding_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `wedding_title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wedding_title` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wedding_title`
+--
+
+LOCK TABLES `wedding_title` WRITE;
+/*!40000 ALTER TABLE `wedding_title` DISABLE KEYS */;
+INSERT INTO `wedding_title` VALUES (1,'Intro'),(2,'TIỆC CƯỚI - TRÀNG AN PLAZA'),(3,'TIỆC CƯỚI TRỌN GÓI'),(4,'GÓI TRANG TRÍ TIỆC CƯỚI'),(5,'ẨM THỰC');
+/*!40000 ALTER TABLE `wedding_title` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -642,4 +1009,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-17 13:24:15
+-- Dump completed on 2023-05-19 14:14:39

@@ -48,7 +48,7 @@
         <div id="clear"></div>
         <section id="section_2" class="container">
             <p><?php echo $script; ?></p>
-            <img src="images/review_1/<?php echo $image; ?>" alt="">
+            <img src="images/review/<?php echo $image; ?>" alt="">
         </section>
         <div id="clear"></div>
         <section id="section_3" class="container">
@@ -69,7 +69,7 @@
                                 echo "
                                 <div class='row' style='padding:20px; margin-bottom:5px;'>
                                     <div class='col-2'>
-                                        <img src='images/review_1/user.jpg'  width='50px' height='50px'>
+                                        <img src='images/review/user.jpg'  width='50px' height='50px'>
                                     </div>
                                     <div class='col-10 comment'>
                                         <p style='color:blue'>{$row['name']}     <i style='font-size:smaller; color: gray;'>{$row['date']}</i> </p> 
