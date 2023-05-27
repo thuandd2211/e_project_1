@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    font-size: 13px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: justify;
     line-height: 30px;
     
@@ -14,12 +14,17 @@ body{
     clear: both;
 }
 .dropdown:hover>.dropdown-menu {
-    display: block;
-  }
+    display: block;  
+}
+.dropdown li :hover{
+    background-color: rgb(77, 75, 75);
+}
 .dropdown>.dropdown-toggle:active {
     pointer-events: none;
 }
 nav {
-    background-color: rgb(191, 243, 243);
+    /* background-color: rgb(191, 243, 243); */
+    background-color: rgb(77, 75, 75);
+    /* background-color: rgb(170, 169, 169); */
     height: 75px;  
 }

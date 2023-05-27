@@ -9,7 +9,7 @@
     function check_username($str){     
         $conn = connect_db();
         $flag = 0;
-        $sql = "SELECT id, viewer_username FROM viewer WHERE viewer_username = ? ";
+        $sql = "SELECT id, username FROM viewer WHERE username = ? ";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param("s",$str);
         $stmt -> execute();
@@ -23,7 +23,7 @@
     function check_email($str){     
         $conn = connect_db();
         $flag = 0;
-        $sql = "SELECT id, viewer_email FROM viewer WHERE viewer_email = ? ";
+        $sql = "SELECT id, email FROM viewer WHERE email = ? ";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param("s",$str);
         $stmt -> execute();
@@ -37,7 +37,7 @@
     function check_phone($str){     
         $conn = connect_db();
         $flag = 0;
-        $sql = "SELECT id, viewer_phone FROM viewer WHERE viewer_phone = ? ";
+        $sql = "SELECT id, phone FROM viewer WHERE phone = ? ";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param("s",$str);
         $stmt -> execute();
@@ -85,9 +85,9 @@
         $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
         if (!$error){
             $conn = connect_db();
-            $sql = "INSERT INTO viewer (viewer_username, viewer_password, viewer_name, viewer_email, viewer_phone) VALUES (?,?,?,?,?)";
+            $sql = "INSERT INTO viewer (username, password, name, email, phone) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt -> bind_param("ssssss",$username,$password,$fullname,$email,$phone);
+            $stmt -> bind_param("sssss",$username,$password,$fullname,$email,$phone);
             $fullname = $data['fullname'];
             $username = $data['username'];
             $password = $data['password'];

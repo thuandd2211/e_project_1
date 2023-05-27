@@ -1,12 +1,12 @@
 <?php
-    require_once("../controller/user_info_be.php");
+    require_once("../model/module_base.php");
     $result = select_viewer($_SESSION['user'][2]);
     if ($result -> num_rows > 0){
         while ($row = $result -> fetch_assoc()){
-            $name = $row['viewer_name'];
-            $username = $row['viewer_username'];
-            $phone = $row['viewer_phone'];
-            $email = $row['viewer_email'];
+            $name = $row['name'];
+            $username = $row['username'];
+            $phone = $row['phone'];
+            $email = $row['email'];
         }
     }
 ?>
@@ -39,7 +39,7 @@
                                     <ul class="list-unstyled mb-1-9">
                                         <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Tài khoản: </span> <?php echo $username; ?></li>
                                         <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> <?php echo $email; ?></li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Số điện thoại:</span> <?php echo "+84 ".$phone; ?></li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Số điện thoại:</span> <?php echo $phone; ?></li>
                                     </ul>
                                     <a  href="home.php" class="btn btn-success">Quay lại trang chủ</a>
                                 </div>

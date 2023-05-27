@@ -1,51 +1,6 @@
-<?php require_once('../controller/home_be.php');
-    session_start();
-    $section = array();
-    for ($i = 1; $i <= 4; $i ++){
-        $section[$i] = select_home($i);
-        if ($section[$i] -> num_rows > 0){
-            while ($row[$i] = $section[$i] -> fetch_assoc()){
-                $title[$i][] = $row[$i]['title'];
-                $sub_title[$i][] = $row[$i]['sub_title'];
-                $script[$i][] = $row[$i]['script'];
-                $image[$i][] = $row[$i]['image'];
-            }
-        }
-    }
-    $result_partner = select_partner();
-    if ($result_partner -> num_rows > 0){
-        while ($row_partner = $result_partner -> fetch_assoc()){
-            $img_partner[] = $row_partner['partner_logo'];
-        }
-    }
-    $result_contact = select_contact();
-    if ($result_contact -> num_rows > 0){
-        while ($row_contact = $result_contact -> fetch_assoc()){
-            $phone[] = $row_contact['phone'];
-            $address[] = $row_contact['address'];
-            $email[] = $row_contact['email'];
-        }
-    }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Trang chủ Tràng An Plaza</title>
-	<link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <?php require_once('include/header.php'); ?>
 
-    
-</head>
-<body>
-    <?php require_once('../view/include/header.php'); ?>
-    <div id="clear"></div>
+
     <main>
         <section id="section_1">
             <div id="carousel-intro" class="carousel slide" data-bs-ride="carousel">
@@ -56,13 +11,13 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/home/<?php echo $image[1][0]; ?>" class="d-block w-100"  alt="...">
+                    <img src="images/home/wedding_3.jpg" class="d-block w-100"  alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/home/<?php echo $image[1][1]; ?>" class="d-block w-100"  alt="...">
+                    <img src="images/home/wedding_2.png" class="d-block w-100"  alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/home/<?php echo $image[1][2]; ?>" class="d-block w-100 " alt="...">
+                    <img src="images/home/wedding_1.jpg" class="d-block w-100 " alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel-intro" data-bs-slide="prev">
@@ -74,107 +29,79 @@
                 </button>
               </div>
         </section>
-        <div id="clear"></div>
-
         <section id="section_2" class="container">
+            <img class="d-flex justify-content-center" src="images/home/wedding_7.png" alt="">
+            <p>Tràng An Palace là đại diện tiêu biểu khi nhắc đến điểm đón đầu những làn gió xu hướng sự kiện tại khu vực phía Tây Hà Thành. Thoát khỏi thiết kế mặc định cứng nhắc của các trung tâm hội nghị, dấu ấn kiến trúc mang đậm tính chiết trung với công năng hiện đại. Nơi đây trở thành tọa độ gặp gỡ của nét đẹp cũ – mới, tinh tế – sang trọng, cổ điển – náo nhiệt, nhưng vẫn được “kèm cặp” trong những quy tắc thống nhất về bản sắc. <br>
+                Tổng hòa cùng với đó là những giá trị dịch vụ cốt lõi nằm ở yếu tố con người, mang đến trải nghiệm ẩm thực, phong thái phục vụ, khả năng điều phối sự kiện đẳng cấp. Điều này cho phép những dòng chảy sự kiện trải qua đa dạng điểm chạm lý thú, choáng ngợp khi đến với Tràng An Palace.
+            </p>
+        </section>
+        <section id="section_3" class="container">
+            <h1>DỊCH VỤ SỰ KIỆN</h1>
             <div class="row">
-                <div class="col-6 hover01"  style="position: relative;">
-                    <figure><img src="images/home/<?php echo $image[2][0]; ?>" alt=""></figure>
-                </div>
-                <div class="col-6">
-                    <h1><?php echo $title[2][0]; ?></h1>
-                    <p><?php  echo $script[2][0]; ?></p>
+                <?php 
+                    for ($i=0;$i < (select_event_type()->num_rows) ;$i++){
+                        $result_detail = select_detail(($i+1));
+                        if ($result_detail -> num_rows > 0){
+                            while ($row_detail = $result_detail -> fetch_assoc()){
+                                echo "
+                                    <div class='col-6 hover01 mb-4' style='position: relative;'>
+                                        <figure class='home_section_3_figure'><img src='images/{$row_detail['image']}' class='figure_img home_section_3_img';' ></figure>
+                                    </div>
+                                    <div class='col-6 p-5'>
+                                        <h2>{$row_detail['title']}</h2>
+                                        <p>{$row_detail['script']}</p>
+                                    </div>
+                                ";
+                            }
+                        }
 
-                </div>
+                    }
+                ?>
+
             </div>
         </section>
-        <div id="clear"></div>
-
-        <section id="section_3" >
-            <div class="container text-center pt-5">
-                <h1><?php echo $title[3][0]; ?></h1>
-            </div>
-            
-            <section id="section_3_1" class="container"> 
-                <div class="row container-fluid">
-                    <div class="col-6 hover01" style="position: relative;">
-                        <figure><img src="images/home/<?php echo $image[3][0]; ?>" alt=""></figure>
-                    </div>
-                    <div class="col-6">
-                        <h2><a href="wedding.php"><?php echo $sub_title[3][0]; ?></a></h2>
-                        <p><?php echo $script[3][0]; ?></p>
-                    </div>
-                </div>
-            </section>
-            <section id="section_3_2" class="container">
-                <div class="row container-fluid">
-                    <div class="col-6">
-                        <h2><a href="company.php"><?php echo $sub_title[3][1]; ?></a></h2>
-                        <p><?php echo $script[3][1]; ?></p>
-                    </div>
-                    <div class="col-6 hover01" style="position: relative;">
-                        <figure><img src="images/home/<?php echo $image[3][1]; ?>" alt=""></figure>
-                    </div>
-                </div>
-            </section>
-            <section id="section_3_3" class="container">
-                <div class="row container-fluid">
-                    <div class="col-6 hover01" style="position: relative;"> 
-                        <figure><img src="images/home/<?php echo $image[3][2]; ?>" alt=""></figure>
-                    </div>
-                    <div class="col-6">
-                        <h2><a href="outdoor.php"><?php echo $sub_title[3][2]; ?></a></h2>
-                        <p><?php echo $script[3][2]; ?></p>
-                    </div>
-                </div>
-            </section>
-        </section>
-        <div id="clear"></div>
         <section id="section_4" class="container">
             <div class="container text-center" id="section_4_1">
-                <h1><?php echo $title[4][0]; ?></h1>
+                <h1>DẤU ẤN TRÀNG AN PALACE</h1>
             </div>
             <br>
             <div id="section_4_2" class="row container-fluid">
-                <?php 
-                    for ($j = 0; $j < count($image[4]); $j ++){
-                        echo "
-                            <div class='col-4 container-fluid hover01'  style='position: relative;'>
-                                <a href='#'>
-                                    <figure><img src='images/home/{$image[4][$j]}'></figure>
-                                    <br>
-                                    <h5 class='container text-center'>{$sub_title[4][$j]}</h5>
-                                    <p>{$script[4][$j]}</p>
-                                </a>
-                            </div>
-                        ";
-                    }
-                ?>
-            </div>
-        </section>    
-        <div id="clear"></div>
-        <section id="section_5" class="container">
-                <div class="container">
-                    <h1 class="container text-center">ĐỐI TÁC</h1>
+                <div class='col-4 container-fluid hover01'  style='position: relative;'>
+                    <figure><img src='images/home/architecture.jpg'></figure>
+                    <br>
+                    <h5 class='container text-center'>KIẾN TRÚC TÂN CỔ ĐIỂN</h5>
+                    <p>Khung dáng đắp đá marble, phân bổ thêm những đường cong uốn cạnh, các sảnh tiệc lộ diện theo cá tính không trùng lặp. Tràng An Palace không che giấu ý định tạo nên ấn tượng choáng ngợp cho bất kỳ ai ghé qua.</p>
                 </div>
-                <br><br>
-                <div class="row container-fluid">
-                    <?php
-                        foreach($img_partner as $partner){
+                <div class='col-4 container-fluid hover01'  style='position: relative;'>
+                    <figure><img src='images/home/service_1.jpg'></figure>
+                    <br>
+                    <h5 class='container text-center'>DỊCH VỤ THẤU HIỂU</h5>
+                    <p>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</p>
+                </div>
+                <div class='col-4 container-fluid hover01'  style='position: relative;'>
+                    <figure><img src='images/home/food_1.jpg'></figure>
+                    <br>
+                    <h5 class='container text-center'>DẤU ẤN ẨM THỰC</h5>
+                    <p>Các thực đơn tiệc buffet, tiệc tea-break, tiệc set-menu hay thực đơn tự chọn hài hòa trong cách kết hợp món, dễ tiếp cận đến khẩu vị bản địa nhưng vẫn đủ biến tấu làm thực khách bật lên lời khen tấm tắc.</p>
+                </div>
+            </div>
+        </section> 
+        <section id="section_5" class="container">
+            <h1>ĐỐI TÁC</h1>
+            <div class="row container-fluid">
+                <?php 
+                    $result_partner = select_partner();
+                    if ($result_partner -> num_rows > 0){
+                        while ($row_partner = $result_partner -> fetch_assoc()){
                             echo "
-                                <div class='col-3 container'>
-                                    <img src='images/partner/{$partner}'>
+                                <div class='col align-items-lg-center'>
+                                    <img class='home_section_5_img' src='images/{$row_partner['logo']}' >
                                 </div>
                             ";
                         }
-                    ?>
-                </div>
+                    }
+                ?>
+            </div>
         </section>
     </main>
-    <div id="clear"></div>
-    <?php require_once('../view/include/footer.php'); ?>
-
-
-	
-</body>
-</html>
+    <?php require_once('include/footer.php'); ?>

@@ -1,13 +1,23 @@
+<div id="clear"></div>
+    <?php
+        $result_contact = select_contact();
+        if ($result_contact -> num_rows > 0){
+            while ($row_contact = $result_contact -> fetch_assoc()){
+                $phone[] = $row_contact['phone'];
+                $address[] = $row_contact['address'];
+                $email[] = $row_contact['email'];
+            }
+        }
+    ?>
 <footer>
         <section id="section_1" class="container">
             <div class="row container-fluid ">
                 <div class="col-4">
                     <ul>
                         <li><a href="home.php"><b>HOME</b></a></li>
-                        <li><a href="hall.php">SẢNH TIỆC</a></li>
-                        <li><a href="wedding.php">TIỆC CƯỚI & KỶ NIỆM</a></li>
-                        <li><a href="company.php">TIỆC DOANH NGHIỆP</a></li>
-                        <li><a href="outdoor.php">TIỆC NGOÀI</a></li>
+                        <li><a href="#">TIỆC CƯỚI & KỶ NIỆM</a></li>
+                        <li><a href="#">TIỆC DOANH NGHIỆP</a></li>
+                        <li><a href="#">TIỆC NGOÀI</a></li>
                         <li><a href="gallery.php?page=1">GALLERY</a></li>
                     </ul>
                 </div>
@@ -31,3 +41,6 @@
             <span style="color: white;">© 2018 VN Works Co., Ltd. All rights reserved.</span>
         </section>
     </footer>
+</body>
+</html>
+    

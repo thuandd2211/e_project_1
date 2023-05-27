@@ -1,12 +1,4 @@
 <?php
-    require_once("../model/module_base.php");
-    function select_contact(){
-        $conn = connect_db();
-        $sql = "SELECT * FROM contact";
-        $result = $conn->query($sql);
-        $conn -> close();
-        return $result;
-    }
     function is_email($str) {
         return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
     }
@@ -35,7 +27,7 @@
         }
         if (!$error){
             $conn = connect_db();
-            $sql = "INSERT INTO customer (customer_name, customer_phone, customer_email, customer_description) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO customer (name, phone, email, description) VALUES (?,?,?,?)";
             $stmt = $conn -> prepare($sql);
             $stmt->bind_param('ssss',$cus_name,$cus_phone,$cus_email,$cus_script);
             $cus_name = $data['cus_name'];
