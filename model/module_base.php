@@ -71,7 +71,7 @@
     }
     function select_food($id){
         $conn = connect_db();
-        $sql = "SELECT * FROM event_food WHERE event_type_id = ?";
+        $sql = "SELECT * FROM event_food WHERE event_type_id = ? ORDER BY id DESC";
         $stmt = $conn -> prepare($sql);
         $stmt -> bind_param('i',$id_input);
         $id_input = $id;

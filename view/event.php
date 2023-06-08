@@ -78,7 +78,7 @@
             <h1>ẨM THỰC</h1>
             <div class="row container-fluid">
                 <?php 
-                    for ($k = 0; $k < count($event_food); $k ++){
+                    for ($k = 0; $k < 4; $k ++){
                         echo "
                             <div class='col-3'>
                                 <img src='images/{$event_food[$k]}'>
